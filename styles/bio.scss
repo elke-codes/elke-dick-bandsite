@@ -1,3 +1,54 @@
-// --- BIO PAGE SCSS --- //
+/// --- BIO PAGE SCSS --- ///
 
 @use "./partials/typography" as *;
+
+/// ---- ON ALL SCREEN SIZES ----///
+* {
+  box-sizing: border-box;
+}
+
+body{
+  margin:0;
+}
+/// - LOGO
+// background-color: $bandsite-black
+// max-height: 20px;
+// max-width:120px;
+
+/// - NAVIGATION
+// line that rests with bottom margin of nav bar indicates
+// active: $white, bold, underline
+// hover: $white
+// inactive: $mercury
+
+///- HERO IMAGE
+//overlay $bandsite-black 50%opacity on top to increasy legibility of white hero text
+
+/// --- MOBILE STYLES --- ///
+
+// -- TYPOGRAPYHY -- //
+
+// PAGE HEADER & SECTION HEADER
+//font-size: 24px;
+//line-height: 32px;
+// font-weight: bold 700;
+
+//SECTION HEADER
+//font-size:24px;
+//line-height: 32px;
+//font-weight: bold 700;
+
+//SUBHEADER
+//font-size: 14px;
+//line-height: 22px;
+//font-weight: demi 600;
+
+//BODY COPY & FOOTER COPY
+//font-size: 13px;
+//line-height: 18px;
+//font-weight: regular 400;
+
+//FOOTER COPY
+//font-size: 13px;
+//line-height: 18px;
+//font-weight: regular 400;
