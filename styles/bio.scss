@@ -41,6 +41,7 @@
 body {
   margin: 0;
   font-family: AvenirNext LT Pro;
+  color: $bandsite-black;
 }
 
 h1,
@@ -79,13 +80,23 @@ p {
   align-items: center;
   &__link {
     @include link;
+    width: 50%;
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+    &--active {
+      border-bottom: 2px solid $white;
+      font-weight: 700;
+    }
   }
 
   &__nav {
+    width: 100%;
     display: flex;
   }
   &__nav-item {
     color: $white;
+    @include subheader;
   }
 }
 
@@ -110,10 +121,12 @@ p {
   }
   &__page-header {
     @include header;
-    position: absolute;
-    top: 33%;
     color: $white;
-    padding-left: 24px;
+    //with help from https://stackoverflow.com/questions/35871294/center-text-over-an-image-in-flexbox
+    position: absolute;
+    top: 50%; /* vertical alignment */
+    transform: translate(0%, -50%); /* precise centering; see link below */
+    padding-left: 16px;
   }
 }
 
@@ -125,23 +138,36 @@ p {
   &__image {
     width: 100%;
   }
-  //   &__quote{
 
-  //   }
   &__subheader {
     @include subheader;
   }
   &__copy {
     @include copy;
+    padding-bottom: 16px;
+  }
+}
+
+.quote {
+  @include copy;
+  margin: 0;
+  font-weight: 600;
+  padding-top: 8px;
+  // line-height: ;
+  &__copy {
+    @extend .quote;
   }
 }
 
 /// - GALLERY SECTION
 
 .gallery {
+  background-color: $alabaster;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  width: 100vw;
+  padding: 16px;
   // gap: 7vw;
   // margin-bottom: 7vw;
 
@@ -189,7 +215,7 @@ p {
     @include copy;
     padding-top: 24px;
     &--bold {
-      font-weight: 700;
+      font-weight: 600;
     }
     //     &__copy-email {
     //     }
