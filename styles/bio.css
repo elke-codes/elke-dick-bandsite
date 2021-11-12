@@ -2,7 +2,6 @@
   font-family: "AvenirNext LT Pro";
   src: url("../../assets/fonts/AvenirNextLTPro-Demi.woff2") format("woff2"), url("../../assets/fonts/AvenirNextLTPro-Demi.woff") format("woff");
   font-weight: 600;
-  font-style: normal;
 }
 @font-face {
   font-family: "AvenirNext LT Pro";
@@ -22,4 +21,142 @@
 
 body {
   margin: 0;
+  font-family: AvenirNext LT Pro;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.logo {
+  background-color: #323232;
+  max-height: 20px;
+  max-width: 120px;
+  padding-top: 24px;
+  padding-bottom: 16px;
+}
+
+.header {
+  width: 100vw;
+  display: flex;
+  background-color: #323232;
+  flex-direction: column;
+  align-items: center;
+}
+.header__link {
+  text-decoration: none;
+}
+.header__nav {
+  display: flex;
+}
+.header__nav-item {
+  color: #ffffff;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.hero {
+  width: 100vw;
+  position: relative;
+}
+.hero__image {
+  position: relative;
+  width: 100%;
+}
+.hero__page-header {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+  padding-top: 24px;
+  padding-bottom: 16px;
+  position: absolute;
+  top: 33%;
+  color: #ffffff;
+  padding-left: 24px;
+}
+
+.about__header {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+  padding-top: 24px;
+  padding-bottom: 16px;
+}
+.about__image {
+  width: 100%;
+}
+.about__subheader {
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 600;
+  padding-top: 24px;
+  padding-bottom: 16px;
+}
+.about__copy {
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 400;
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.gallery__header {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+  padding-top: 24px;
+  padding-bottom: 16px;
+}
+.gallery__image {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.footer {
+  background-color: #323232;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px;
+}
+.footer__header {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+  padding-top: 24px;
+  padding-bottom: 16px;
+}
+.footer__link {
+  text-decoration: none;
+  color: #ffffff;
+}
+.footer__contact {
+  padding-bottom: 16px;
+}
+.footer__social {
+  display: flex;
+  width: 33%;
+  justify-content: space-between;
+}
+.footer__copy {
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 400;
+  padding-top: 24px;
+}
+.footer__copy--bold {
+  font-weight: 700;
 }/*# sourceMappingURL=bio.css.map */
