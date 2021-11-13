@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: "AvenirNext LT Pro";
-  src: url("../../assets/fonts/AvenirNextLTPro-Demi.woff2") format("woff2"),
+  src: url("../assets/fonts/AvenirNextLTPro-Demi.woff2") format("woff2"),
     url("../../assets/fonts/AvenirNextLTPro-Demi.woff") format("woff");
   font-weight: 600;
   font-style: normal;
@@ -10,16 +10,49 @@
 
 @font-face {
   font-family: "AvenirNext LT Pro";
-  src: url("../../assets/fonts/AvenirNextLTPro-Bold.woff2") format("woff2"),
-    url("../../assets/fonts/AvenirNextLTPro-Bold.woff") format("woff");
+  src: url("../assets/fonts/AvenirNextLTPro-Bold.woff2") format("woff2"),
+    url("../assets/fonts/AvenirNextLTPro-Bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
   font-family: "AvenirNext LT Pro";
-  src: url("../../assets/fonts/AvenirNextLTPro-Regular.woff2") format("woff2"),
-    url("../../assets/fonts/AvenirNextLTPro-Regular.woff") format("woff");
+  src: url("../assets/fonts/AvenirNextLTPro-Regular.woff2") format("woff2"),
+    url("../assets/fonts/AvenirNextLTPro-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
+}
+
+// --- MOBILE --- //
+
+// PAGE HEADER & SECTION HEADER
+@mixin header {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+  @include padding-headers;
+}
+
+// SUBHEADER
+@mixin subheader {
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 600;
+  @include padding-headers;
+}
+
+//BODY COPY & FOOTER COPY
+@mixin copy {
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 400;
+}
+
+// PADDING HEADERS
+@mixin padding-headers {
+  // padding-top: 24px;
+  // padding-bottom: 16px;
+  padding-top: 24px;
+  padding-bottom: 8px;
 }
