@@ -27,6 +27,10 @@ p {
   padding: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
 // --- HEADER --- //
 /// - LOGO
 // background-color: $bandsite-black
@@ -58,9 +62,14 @@ p {
     width: 100%;
     display: flex;
   }
-  &__nav-item {
+  &__nav-link {
     color: $white;
     @include subheader;
+    width: 50%;
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+
     &--active {
       border-bottom: 2px solid $white;
       font-weight: 700;
@@ -69,13 +78,11 @@ p {
       color: $mercury;
       font-weight: 400;
     }
-  }
-  &__link {
-    // @include link;
-    width: 50%;
-    text-align: center;
-    display: flex;
-    justify-content: space-evenly;
+
+    &:hover {
+      // border-bottom: 2px solid $mercury;
+      text-decoration: underline solid $silver;
+    }
 
     ///!!!!! FIGURE OUT WHERE TO PUT THESE PROPERTIES SO THE UNDERLINE IS THERE BUT THE FONT STYLES ARE ALSO APPLIED ON THE TEXT.... play around with h2 and a swap? play around with where to put the active inactive modifiers on...
   }
@@ -197,11 +204,12 @@ p {
     display: flex;
     width: 33%;
     justify-content: space-between;
+    padding-top: 8px;
   }
   &__copy {
     @include copy;
-    padding-top: 24px;
-    &--bold {
+    padding-top: 16px;
+    &--title {
       font-weight: 600;
     }
     //     &__copy-email {
