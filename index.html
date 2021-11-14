@@ -63,14 +63,19 @@
           <!-- about section image -->
           <img src="/assets/images/band.jpg" alt="" class="about__image" />
           <!-- about section quote -->
-          <q class="about__quote">
-            We push each other to be the best. It’s not uncommon for one of us
-            to say ‘this needs to be better, back to the drawing board’
-          </q>
-          <br />
-          <p class="about__quote about__quote-reference">
-            - Bryan Teddy, lead vocalist of The Bees Knees
-          </p>
+          <div class="about__quote-container">
+            <q
+              class="about__quote"
+              cite="http://www.brainstation.io/fake-link-to-bees-knees"
+            >
+              We push each other to be the best. It’s not uncommon for one of us
+              to say ‘this needs to be better, back to the drawing board’
+            </q>
+            <br />
+            <p class="about__quote about__quote-reference">
+              - Bryan Teddy, lead vocalist of The Bees Knees
+            </p>
+          </div>
           <!-- about section subheader -->
           <h3 class="about__subheader">The Bees Knees</h3>
           <!-- about section copy  -->
@@ -213,8 +218,16 @@
           <!-- footer email - opens email program -->
 
           <p class="footer__copy">
+            <!-- <a
+              href="mailto:info@thebeesknees.com"
+              class="footer__link footer__link--email"
+              >info@thebeesknees.com</a
+            > -->
             <a
               href="mailto:info@thebeesknees.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Send us a message!"
               class="footer__link footer__link--email"
               >info@thebeesknees.com</a
             >
@@ -236,24 +249,13 @@
           <p class="footer__copy">
             <a
               href="mailto:pearl.gregg@limitlessag.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Send us a message!"
               class="footer__link footer__link--email"
               >pearl.gregg@limitlessag.com</a
             >
           </p>
-          <!-- <a
-            href="mailto:pearl.gregg@limitlessag.com"
-            class="footer__copy footer__copy--email"
-            >pearl.gregg@limitlessag.com</a
-          > <p class="footer__copy"> -->
-          <!-- <a
-              href="mailto:pearl.gregg@limitlessag.com"
-              class="footer__link footer__link--email"
-              >pearl.gregg@limitlessag.com</a
-            >
-          </p> -->
-          <!-- <p class="footer__copy footer__copy--email">
-             -->
-          <!-- </p> -->
         </div>
         <!-- footer entertainment block -->
         <div class="footer__contact-block">
@@ -270,6 +272,9 @@
           <p class="footer__copy">
             <a
               href="mailto:cwhyte@archentertainment.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Send us a message!"
               class="footer__link footer__link--email"
               >cwhyte@archentertainment.com</a
             >

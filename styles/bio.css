@@ -53,6 +53,9 @@ a {
   max-width: 7.5rem;
   width: 7.5rem;
 }
+.logo:hover {
+  transform: scale(1.2);
+}
 
 .header {
   width: 100vw;
@@ -68,7 +71,6 @@ a {
 }
 @media screen and (min-width: 1280px) {
   .header {
-    align-items: baseline;
     padding-top: 1rem;
   }
 }
@@ -77,6 +79,7 @@ a {
 }
 @media screen and (min-width: 768px) {
   .header__logo {
+    padding-top: 0;
     padding-left: 3rem;
   }
 }
@@ -126,12 +129,16 @@ a {
   font-weight: 600;
 }
 .header__nav-link--inactive {
-  color: #e1e1e1;
+  color: #afafaf;
   font-weight: 400;
 }
+.header__nav-link--inactive:hover {
+  border-bottom: 2px dotted #afafaf;
+}
 .header__nav-link:hover {
-  -webkit-text-decoration: underline solid #afafaf;
-          text-decoration: underline solid #afafaf;
+  border-top: 2px dotted #afafaf;
+  border-radius: 50%;
+  font-weight: 600;
 }
 
 .main {
@@ -216,6 +223,12 @@ a {
     margin-left: 2rem;
   }
 }
+@media screen and (min-width: 1280px) {
+  .about__header {
+    margin-left: 7rem;
+    padding-bottom: 2rem;
+  }
+}
 @media screen and (min-width: 768px) {
   .about__content {
     width: 80%;
@@ -249,7 +262,6 @@ a {
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.5rem;
-  padding-top: 0.25rem;
 }
 @media screen and (min-width: 768px) {
   .about__quote {
@@ -257,14 +269,18 @@ a {
     line-height: 2rem;
   }
 }
-@media screen and (min-width: 1280px) {
-  .about__quote {
-    padding-right: 7rem;
-  }
-}
 @media screen and (min-width: 768px) {
   .about__quote-reference {
     font-size: 1rem;
+  }
+}
+.about__quote-container {
+  padding-top: 0.25rem;
+}
+@media screen and (min-width: 1280px) {
+  .about__quote-container {
+    width: 75%;
+    padding-top: 0.5rem;
   }
 }
 .about__subheader {
@@ -334,6 +350,13 @@ a {
     justify-content: space-between;
   }
 }
+@media screen and (min-width: 1280px) {
+  .gallery {
+    padding: 0 7rem;
+    padding-bottom: 2rem;
+    justify-content: space-around;
+  }
+}
 .gallery__header {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -389,6 +412,11 @@ a {
     padding-top: 0;
   }
 }
+@media screen and (min-width: 1280px) {
+  .footer {
+    padding: 0 7rem 2rem 7rem;
+  }
+}
 @media screen and (min-width: 768px) {
   .footer__top {
     display: flex;
@@ -433,10 +461,17 @@ a {
   }
 }
 .footer__link {
+  color: #afafaf;
+}
+.footer__link:hover {
   color: #ffffff;
+  transform: scale(1.2);
 }
 .footer__icon {
   height: 1.5rem;
+}
+.footer__icon:hover {
+  transform: scale(1.2);
 }
 @media screen and (min-width: 768px) {
   .footer__icon {
