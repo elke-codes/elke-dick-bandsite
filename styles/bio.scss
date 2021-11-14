@@ -1,8 +1,9 @@
 /// --- BIO PAGE SCSS --- ///
 
-@use "./partials/typography" as *;
-@use "./partials/colors" as *;
-@use "./partials/mixins" as *;
+@use "./partials/_typography" as *;
+@use "./partials/_colors" as *;
+@use "./partials/_mixins" as *;
+@use "./partials/_variables" as *;
 
 /// --- MOBILE STYLES --- ///
 
@@ -17,6 +18,8 @@ body {
   margin: 0;
   font-family: "AvenirNext LT Pro";
   color: $bandsite-black;
+  // set font-size to 1vw
+  // font-size: 1.334vw;
 }
 
 h1,
@@ -34,8 +37,8 @@ a {
 // --- HEADER --- //
 /// - LOGO
 // background-color: $bandsite-black
-// max-height: 20px;
-// max-width:120px
+// max-height: 1.25rem;
+// max-width:7.5rem
 /// - NAVIGATION
 // line that rests with bottom margin of nav bar indicates
 // active: $white, bold, underline
@@ -44,10 +47,21 @@ a {
 
 .logo {
   background-color: $bandsite-black;
-  max-height: 20px;
-  max-width: 120px;
-  @include padding-headers;
+
+  // @include padding-headers;
+  // @include tablet {
+  // width: 7.5rem;
+  // }
+  @include tablet {
+    padding: 0rem 2rem;
+  }
+  &__image {
+    max-height: 1.25rem;
+    max-width: 7.5rem;
+    width: 7.5rem;
+  }
 }
+
 .header {
   width: 100vw;
   // position: fixed;
@@ -58,21 +72,44 @@ a {
   flex-direction: column;
   align-items: center;
 
+  @include tablet {
+    flex-direction: row;
+  }
+  @include desktop {
+    align-items: baseline;
+    padding-top: 1rem;
+  }
+  &__logo {
+    padding-top: 1rem;
+    @include tablet {
+      padding-left: 3rem;
+    }
+    @include desktop {
+      padding-left: 7rem;
+    }
+  }
   &__nav {
     width: 100%;
     display: flex;
   }
   &__nav-link {
     color: $white;
-    @include subheader;
+    @include copy;
     width: 50%;
     text-align: center;
     display: flex;
     justify-content: space-evenly;
+    padding: 0.5rem 0;
+    @include tablet {
+      font-size: 1rem;
+      padding: 1.5rem 0;
+      width: fit-content;
+      margin: 0 2rem;
+    }
 
     &--active {
-      border-bottom: 2px solid $white;
-      font-weight: 700;
+      border-bottom: 0.2rem solid $white;
+      font-weight: 600;
     }
     &--inactive {
       color: $mercury;
@@ -80,11 +117,11 @@ a {
     }
 
     &:hover {
-      // border-bottom: 2px solid $mercury;
+      // border-bottom: 0.125rem solid $mercury;
       text-decoration: underline solid $silver;
     }
 
-    ///!!!!! FIGURE OUT WHERE TO PUT THESE PROPERTIES SO THE UNDERLINE IS THERE BUT THE FONT STYLES ARE ALSO APPLIED ON THE TEXT.... play around with h2 and a swap? play around with where to put the active inactive modifiers on...
+    ///!!!!! FIGURE OUT WHERE TO PUT THESE PROPERTIES SO THE UNDERLINE IS THERE
   }
 }
 
@@ -97,47 +134,105 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 16px;
+  padding: 0 1rem;
 }
 
 .hero {
+  position: relative;
   width: 100vw;
-  height: 23vh;
-  // background-image: ;
+  height: 60vw;
   background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
-  // https://dev.to/nazanin_ashrafi/how-to-darken-an-image-with-css-4f5h
-  background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.2)),
+  background-image: linear-gradient(
+      rgba(50, 50, 50, 0.5),
+      rgba(50, 50, 50, 0.5)
+    ),
     url(../assets/images/hero-bio.jpg);
-
   display: flex;
   align-items: center;
-
+  @include tablet {
+    height: 50vh;
+  }
+  // &__overlay {
+  //   width: 100%;
+  //   height: 100%;
+  //   position: absolute;
+  //   background-color: rgba(50, 50, 50, 0.5);
+  // }
   &__page-header {
     @include header;
+    // @include padding-headers;
     color: $white;
-    margin-left: 1rem;
+    // margin-left: 1rem;
+    @include tablet {
+      padding-left: 3rem;
+    }
+    @include desktop {
+      padding-left: 7rem;
+    }
   }
 }
 
 /// - ABOUT SECTION
 .about {
+  @include tablet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   &__header {
-    @include header;
+    @include section-header;
+    @include tablet {
+      align-self: flex-start;
+      margin-left: 2rem;
+    }
+  }
+
+  &__content {
+    @include tablet {
+      width: 80%;
+      // display: flex;
+      // flex-direction: column;
+      // align-items: center;
+    }
+    @include desktop {
+      width: 70%;
+    }
   }
   &__image {
     width: 100%;
-    height: 18vh;
+    height: 10rem;
     object-fit: cover;
-    object-position: bottom;
-    margin-bottom: 8px;
+    object-position: center;
+    margin-bottom: 1rem;
+    @include tablet {
+      height: 19.375rem;
+    }
+    @include desktop {
+      height: 35vw;
+    }
   }
 
   &__quote {
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 600;
-    line-height: 24px;
-    padding-top: 4px;
+    line-height: 1.5rem;
+    padding-top: 0.25rem;
+    @include tablet {
+      // margin-top: 1rem;
+      font-size: 1.375rem;
+      line-height: 2rem;
+    }
+    @include desktop {
+      // padding-right: 7rem;
+    }
+  }
+
+  &__quote-reference {
+    @include tablet {
+      font-size: 1rem;
+    }
   }
 
   &__subheader {
@@ -145,32 +240,77 @@ a {
   }
   &__copy {
     @include copy;
-    padding-bottom: 16px;
+    padding-bottom: 1rem;
+    @include tablet {
+      display: flex;
+      padding-bottom: 2rem;
+    }
+
+    &--bottom-right {
+      @include tablet {
+        padding-left: 1rem;
+      }
+    }
   }
 }
 
 /// - GALLERY SECTION
-//!!!!too much padding between hallery and about.. think about puttig about section in its own sections aka header+image ,quote, copy. then add 16px to end of copy instead of top of gallery or none at all at about section end
+//!!!!too much padding between hallery and about.. think about puttig about section in its own sections aka header+image ,quote, copy. then add 1rem to end of copy instead of top of gallery or none at all at about section end
 .gallery {
   background-color: $alabaster;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  justify-content: center;
   width: 100vw;
-  padding: 0 16px;
+  padding: 0 1rem;
+  // margin-bottom: 1rem;
   // gap: 7vw;
   // margin-bottom: 7vw;
+  // gap: 1rem;
 
+  @include tablet {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0 3rem;
+    padding-bottom: 1.5rem;
+    // gap: 1.5rem;
+    justify-content: space-between;
+  }
+  // &__container {
+  //   @include tablet {
+  //     margin-left: 2rem;
+  //     display: flex;
+  //     flex-direction: row;
+  //     flex-wrap: wrap;
+  //     justify-content: center;
+  // }
+  // }
   &__header {
-    @include header;
+    @include section-header;
+    @include tablet {
+      align-self: flex-start;
+      width: 100%;
+    }
   }
   &__image {
     width: 100%;
-    margin-bottom: 16px;
+    // gap: 1rem;
+    padding-bottom: 1rem;
     filter: grayscale(100);
     &:hover {
       filter: grayscale(0);
     }
+    @include tablet {
+      width: 31%;
+      // padding: 0 0.5rem;
+      // column-gap: 1rem;
+      // padding-bottom: 0;
+      gap: 1rem;
+    }
+
+    //   @include media(min-width);
   }
 }
 
@@ -182,33 +322,81 @@ a {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 16px;
+  padding: 1rem;
   // width: 100vw;
+  @include tablet {
+    padding: 3rem;
+    padding-top: 0;
+  }
+  // this is new!!
+  &__top {
+    @include tablet {
+      display: flex;
+      width: 100%;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+  }
+  &__container {
+    display: flex;
+    flex-direction: column;
+    @include tablet {
+      flex-direction: row;
+      align-items: baseline;
+    }
+    // align-items: baseline;
+  }
 
   &__header {
-    @include header;
+    @include section-header;
+    @include tablet {
+      padding-right: 2.25rem;
+    }
   }
   &__link {
-    @include link;
+    // @include link;
     color: $white;
+
     // &--email{
 
     // }
   }
-  //   &__icon {
-  //   }
-  &__contact {
-    padding-bottom: 16px;
+  &__icon {
+    height: 1.5rem;
+    @include tablet {
+      height: 1.5rem;
+    }
   }
+
   &__social {
     display: flex;
-    width: 33%;
+    // width: 33%;
+    // this is new!!
+    width: 85%;
     justify-content: space-between;
-    padding-top: 8px;
+    padding-top: 0.5rem;
+    @include tablet {
+      flex-direction: row;
+      height: fit-content;
+      width: 8rem;
+    }
+  }
+  &__contact {
+    // padding-bottom: 1rem;
+    @include tablet {
+      width: 100%;
+      display: flex;
+    }
+  }
+  &__contact-block {
+    @include tablet {
+      // padding: 1rem;
+      padding-right: 3rem;
+    }
   }
   &__copy {
-    @include copy;
-    padding-top: 16px;
+    @include footer-copy;
+    padding-top: 1rem;
     &--title {
       font-weight: 600;
     }
@@ -216,10 +404,21 @@ a {
     //     }
   }
 
-  //   &__logo{
-  //     &__logo--link
-  //   }
-  //   &__copyright{
+  &__logo {
+    visibility: visible;
+    padding-top: 4rem;
+    @include tablet {
+      visibility: hidden;
+      padding-top: 0;
+      // width: 33%;
+    }
+    //   &__copyright{
+  }
+  &__logo-top {
+    visibility: hidden;
 
-  //   }
+    @include tablet {
+      visibility: visible;
+    }
+  }
 }

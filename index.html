@@ -24,8 +24,8 @@
     <!-- HEADER -->
     <header class="header">
       <!-- header logo img link -->
-      <div class="logo">
-        <a href="index.html"
+      <div class="logo header__logo">
+        <a href="index.html" class="logo__link"
           ><img
             src="./assets/logo/Logo-bandsite.svg"
             alt=""
@@ -33,12 +33,10 @@
         /></a>
       </div>
       <!-- header navigation -->
-      <!-- header nav link = Biography ===active  -->
       <nav class="header__nav">
         <a href="" class="header__nav-link header__nav-link--active">
           Biography
         </a>
-        <!-- header nav link = shows ===inactive-->
         <a href="" class="header__nav-link header__nav-link--inactive">
           Shows
         </a>
@@ -53,48 +51,55 @@
         <!-- <img src="/assets/images/hero-bio.jpg" alt="" class="hero__image" /> -->
         <!-- hero page header the bees knees, this is a site about the bees knees -->
         <h1 class="hero__page-header">The Bees Knees</h1>
+        <!-- https://stackoverflow.com/questions/58749869/overlay-on-a-flexbox-while-keeping-responsivness -->
+        <!-- <div class="hero__overlay"></div> -->
       </section>
 
       <!-- ABOUT SECTION -->
       <section class="about">
         <!-- about section header -->
         <h2 class="about__header">About the Musicians</h2>
-        <!-- about section image -->
-        <img src="/assets/images/band.jpg" alt="" class="about__image" />
-        <!-- about section quote -->
-        <q class="about__quote">
-          We push each other to be the best. It’s not uncommon for one of us to
-          say ‘this needs to be better, back to the drawing board’
-        </q>
-        <br />
-        <p class="about__quote">
-          - Bryan Teddy, lead vocalist of The Bees Knees
-        </p>
-        <!-- about section subheader -->
-        <h3 class="about__subheader">The Bees Knees</h3>
-        <!-- about section copy  -->
-        <p class="about__copy about__copy--top-left">
-          The Bees Knees is a pop rock band originating from San Francisco,
-          California. The band consists of lead vocalist Bryan Teddy, guitarist
-          Mack Tolkens, guitarist Andrew Green, bassist Kent Zulkee and drummer
-          Freddie Fischer. The band achieved its first commercial success as an
-          unsigned act, drawing attention from manager Cam Adams. Having worked
-          with other popular acts (The Elephant In The Room, One Trick Pony, The
-          Cat’s Meow), Adams was confident the band could succeed even further,
-          pushing them to sign with Magenta Records.
-        </p>
-        <!-- about section copy -->
-        <p class="about__copy about__copy--bottom-right">
-          From there, the band has soared, gaining international recognition and
-          ranking in the top 10 on the Poster Charts. New fans immediately fell
-          in love with the band’s original and organic attitude, solidifying
-          their place as one of the hottest and fastest up and coming acts of
-          this century. Fans affectionately refer to themselves as “The Hive”
-          and are drawn to their candid and authentic performances on stage.
-          Looking forward to touring in the future, The Bees Knees are currently
-          recording their second studio album, looking to be released in late
-          2021.
-        </p>
+        <div class="about__content">
+          <!-- about section image -->
+          <img src="/assets/images/band.jpg" alt="" class="about__image" />
+          <!-- about section quote -->
+          <q class="about__quote">
+            We push each other to be the best. It’s not uncommon for one of us
+            to say ‘this needs to be better, back to the drawing board’
+          </q>
+          <br />
+          <p class="about__quote about__quote-reference">
+            - Bryan Teddy, lead vocalist of The Bees Knees
+          </p>
+          <!-- about section subheader -->
+          <h3 class="about__subheader">The Bees Knees</h3>
+          <!-- about section copy  -->
+          <div class="about__copy">
+            <p class="about__copy--top-left">
+              The Bees Knees is a pop rock band originating from San Francisco,
+              California. The band consists of lead vocalist Bryan Teddy,
+              guitarist Mack Tolkens, guitarist Andrew Green, bassist Kent
+              Zulkee and drummer Freddie Fischer. The band achieved its first
+              commercial success as an unsigned act, drawing attention from
+              manager Cam Adams. Having worked with other popular acts (The
+              Elephant In The Room, One Trick Pony, The Cat’s Meow), Adams was
+              confident the band could succeed even further, pushing them to
+              sign with Magenta Records.
+            </p>
+            <br />
+            <p class="about__copy--bottom-right">
+              From there, the band has soared, gaining international recognition
+              and ranking in the top 10 on the Poster Charts. New fans
+              immediately fell in love with the band’s original and organic
+              attitude, solidifying their place as one of the hottest and
+              fastest up and coming acts of this century. Fans affectionately
+              refer to themselves as “The Hive” and are drawn to their candid
+              and authentic performances on stage. Looking forward to touring in
+              the future, The Bees Knees are currently recording their second
+              studio album, looking to be released in late 2021.
+            </p>
+          </div>
+        </div>
       </section>
 
       <!-- GALLERY SECTION -->
@@ -153,34 +158,49 @@
     <!-- FOOTER -->
     <footer class="footer">
       <!-- footer subtitle -->
-      <h3 class="footer__header">Get In Touch</h3>
-      <!-- footer social block -->
-      <div class="footer__social">
-        <!-- footer icon x3 -->
-        <a href="http://www.instagram.com" class="footer__link">
-          <img
-            src="/assets/icons/SVG/Icon-instagram.svg"
-            alt="instagram logo"
-            class="footer__icon"
-        /></a>
-        <a href="http://www.facebook.com" class="footer__link">
-          <img
-            src="/assets/icons/SVG/Icon-facebook.svg"
-            alt="facebook logo"
-            class="footer__icon"
-        /></a>
-        <a href="http://www.twitter.com" class="footer__link">
-          <img
-            src="/assets/icons/SVG/Icon-twitter.svg"
-            alt=""
-            class="footer__icon"
-        /></a>
+      <div class="footer__top">
+        <div class="footer__container">
+          <h3 class="footer__header">Get In Touch</h3>
+          <!-- footer social block -->
+          <div class="footer__social">
+            <!-- footer icon x3 -->
+            <a href="http://www.instagram.com" class="footer__link">
+              <img
+                src="/assets/icons/SVG/Icon-instagram.svg"
+                alt="instagram logo"
+                class="footer__icon"
+            /></a>
+            <a href="http://www.facebook.com" class="footer__link">
+              <img
+                src="/assets/icons/SVG/Icon-facebook.svg"
+                alt="facebook logo"
+                class="footer__icon"
+            /></a>
+            <a href="http://www.twitter.com" class="footer__link">
+              <img
+                src="/assets/icons/SVG/Icon-twitter.svg"
+                alt=""
+                class="footer__icon"
+            /></a>
+          </div>
+        </div>
+
+        <!-- footer logo -->
+        <!-- <a class="footer__link" href="#"><img src="./assets/logo/Logo-bandsite.svg" alt="" class="footer__logo"></a> -->
+        <div class="logo footer__logo-top">
+          <a href="index.html" class="footer__link"
+            ><img
+              src="./assets/logo/Logo-bandsite.svg"
+              alt=""
+              class="logo__image"
+          /></a>
+        </div>
       </div>
 
       <!-- footer SECTION CONTACT? -->
       <div class="footer__contact">
         <!-- footer management block -->
-        <div class="footer__contact">
+        <div class="footer__contact-block">
           <!-- footer namecopy--bold -->
           <p class="footer__copy footer__copy--title">
             Cam Adams <br />The Bees Knees Management
@@ -191,10 +211,17 @@
             New York, NY 10012, USA
           </p>
           <!-- footer email - opens email program -->
-          <p class="footer__copy footer__copy--email">info@thebeesknees.com</p>
+
+          <p class="footer__copy">
+            <a
+              href="mailto:info@thebeesknees.com"
+              class="footer__link footer__link--email"
+              >info@thebeesknees.com</a
+            >
+          </p>
         </div>
         <!-- footer artist group block -->
-        <div class="footer__contact">
+        <div class="footer__contact-block">
           <!-- footer namecopy--bold -->
           <p class="footer__copy footer__copy--title">
             Pearl Gregg <br />TLimitless Artist Group
@@ -204,13 +231,32 @@
             Booking Agent for <br />
             US / South America / Japan
           </p>
+
           <!-- footer email - opens email program -->
-          <p class="footer__copy footer__copy--email">
-            pearl.gregg@limitlessag.com
+          <p class="footer__copy">
+            <a
+              href="mailto:pearl.gregg@limitlessag.com"
+              class="footer__link footer__link--email"
+              >pearl.gregg@limitlessag.com</a
+            >
           </p>
+          <!-- <a
+            href="mailto:pearl.gregg@limitlessag.com"
+            class="footer__copy footer__copy--email"
+            >pearl.gregg@limitlessag.com</a
+          > <p class="footer__copy"> -->
+          <!-- <a
+              href="mailto:pearl.gregg@limitlessag.com"
+              class="footer__link footer__link--email"
+              >pearl.gregg@limitlessag.com</a
+            >
+          </p> -->
+          <!-- <p class="footer__copy footer__copy--email">
+             -->
+          <!-- </p> -->
         </div>
         <!-- footer entertainment block -->
-        <div class="footer__contact">
+        <div class="footer__contact-block">
           <!-- footer namecopy--bold -->
           <p class="footer__copy footer__copy--title">
             Carson Whyte<br />ARCH Entertainment
@@ -233,7 +279,7 @@
 
       <!-- footer logo -->
       <!-- <a class="footer__link" href="#"><img src="./assets/logo/Logo-bandsite.svg" alt="" class="footer__logo"></a> -->
-      <div class="logo">
+      <div class="logo footer__logo">
         <a href="index.html" class="footer__link"
           ><img
             src="./assets/logo/Logo-bandsite.svg"

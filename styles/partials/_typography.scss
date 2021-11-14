@@ -1,5 +1,9 @@
 /// --- TYPOGRAPY SCSS ///
 
+@use "./colors" as *;
+@use "./mixins" as *;
+@use "./variables" as *;
+
 @font-face {
   font-family: "AvenirNext LT Pro";
   src: url("../assets/fonts/AvenirNextLTPro-Demi.woff2") format("woff2"),
@@ -24,35 +28,74 @@
   font-style: normal;
 }
 
-// --- MOBILE --- //
+// --- MOBILE FIRST--- //
 
-// PAGE HEADER & SECTION HEADER
+// PAGE HEADER &
 @mixin header {
-  font-size: 24px;
-  line-height: 32px;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 600;
+  margin-left: 1rem;
+  //padding in styleguide doesn't match mockup
+  // @include padding-headers;
+  @include tablet {
+    font-size: 3.75rem;
+    line-height: 4.25rem;
+    font-weight: 600;
+    margin-left: 2rem;
+  }
+}
+
+// SECTION HEADER
+@mixin section-header {
+  font-size: 1.5rem;
+  line-height: 2rem;
   font-weight: 600;
   @include padding-headers;
+  @include tablet {
+    font-size: 2.25rem;
+    line-height: 2.75rem;
+    font-weight: 600;
+    // margin-left: 2rem;
+  }
 }
 
 // SUBHEADER
 @mixin subheader {
-  font-size: 14px;
-  line-height: 22px;
+  font-size: 0.875rem;
+  line-height: 1.375rem;
   font-weight: 600;
   @include padding-headers;
+  @include tablet {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
 }
 
-//BODY COPY & FOOTER COPY
+// BODY COPY &
 @mixin copy {
-  font-size: 13px;
-  line-height: 18px;
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
   font-weight: 400;
+  @include tablet {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+  }
+  @include desktop {
+    font-size: 1rem;
+  }
 }
 
-// PADDING HEADERS
-@mixin padding-headers {
-  // padding-top: 24px;
-  // padding-bottom: 16px;
-  padding-top: 24px;
-  padding-bottom: 8px;
+// FOOTER COPY
+@mixin footer-copy {
+  @include copy;
+  @include tablet {
+    line-height: 1.25rem;
+  }
 }
+
+// // LINKS
+// @mixin link {
+//   text-decoration: none;
+//   color: $white;
+// }

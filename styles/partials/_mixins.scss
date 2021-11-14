@@ -1,21 +1,28 @@
 /// --- MIXINS SCSS ///
-
-@mixin link {
-  text-decoration: none;
-}
+@use "./variables" as *;
 
 // MEDIA QUERIES //
 
-// //code snippet from class
+@mixin tablet {
+  @media screen and (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
 @mixin desktop {
   @media screen and (min-width: $desktop-breakpoint) {
     @content;
   }
 }
 
-//set as max width to have desktop styling still apply??
-@mixin tablet {
-  @media screen and (min-width: $tablet-breakpoint) {
-    @content;
+// PADDING HEADERS
+@mixin padding-headers {
+  // padding-top: 1.5rem;
+  // padding-bottom: 1rem;
+  padding-top: 1.5rem;
+  padding-bottom: 0.5rem;
+  @include tablet {
+    padding-top: 3rem;
+    padding-bottom: 1rem;
   }
 }
