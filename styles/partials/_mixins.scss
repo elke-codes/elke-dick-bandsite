@@ -15,14 +15,23 @@
   }
 }
 
-// PADDING HEADERS
-@mixin padding-headers {
-  // padding-top: 1.5rem;
-  // padding-bottom: 1rem;
-  padding-top: 1.5rem;
-  padding-bottom: 0.5rem;
+@mixin flex(
+  $flex-direction: column,
+  $justify-content: space-between,
+  $align-items: center
+) {
+  display: flex;
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+@mixin padding-sections {
+  padding: 0 1rem;
   @include tablet {
-    padding-top: 3rem;
-    padding-bottom: 1rem;
+    padding: 0 2rem;
+  }
+  @include desktop {
+    padding: 0 7rem;
   }
 }

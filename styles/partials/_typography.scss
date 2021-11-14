@@ -35,14 +35,14 @@
   font-size: 1.5rem;
   line-height: 2rem;
   font-weight: 600;
-  margin-left: 1rem;
+  // margin-left: 1rem;
   //padding in styleguide doesn't match mockup
   // @include padding-headers;
   @include tablet {
     font-size: 3.75rem;
     line-height: 4.25rem;
     font-weight: 600;
-    margin-left: 2rem;
+    // margin-left: 2rem;
   }
 }
 
@@ -94,6 +94,18 @@
   }
 }
 
+// PADDING HEADERS
+@mixin padding-headers {
+  // padding-top: 1.5rem;
+  // padding-bottom: 1rem;
+  padding-top: 1.5rem;
+  padding-bottom: 0.5rem;
+  @include tablet {
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+    // padding-left: 2rem;
+  }
+}
 // // LINKS
 // @mixin link {
 //   text-decoration: none;
