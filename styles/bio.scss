@@ -5,9 +5,6 @@
 @use "./partials/_mixins" as *;
 @use "./partials/_variables" as *;
 
-/// --- MOBILE STYLES --- ///
-
-/// ---- ON ALL SCREEN SIZES ----///
 *,
 ::before,
 ::after {
@@ -18,8 +15,6 @@ body {
   margin: 0;
   font-family: "AvenirNext LT Pro";
   color: $bandsite-black;
-  // set font-size to 1vw
-  // font-size: 1.334vw;
 }
 
 h1,
@@ -48,9 +43,10 @@ a {
     transform: scale(1.2);
   }
 }
+
 // --- HEADER --- //
 .header {
-  width: 100vw;
+  width: 100%;
   background-color: $bandsite-black;
   @include flex();
   @include tablet {
@@ -67,7 +63,6 @@ a {
     @include desktop {
       padding-left: 7rem;
     }
-    // @include padding-headers;
   }
 
   /// - NAVIGATION
@@ -84,9 +79,6 @@ a {
     color: $white;
     @include copy;
     width: 50%;
-    // text-align: center;
-    // display: flex;
-    // justify-content: space-evenly;
     @include flex(_, space-evenly, _);
     padding: 0.5rem 0;
     @include tablet {
@@ -104,34 +96,30 @@ a {
       color: $mercury;
       font-weight: 400;
       &:hover {
-        border-bottom: 2px dotted $mercury;
+        border-bottom: 0.125rem dotted $white;
       }
     }
 
     &:hover {
-      border-top: 2px dotted $silver;
+      border-top: 0.125rem dotted $silver;
       border-radius: 50%;
       font-weight: 600;
     }
   }
 }
 
-// --- MAIN ---/
+// --- MAIN --- //
 
 .main {
-  // display: flex;
-  // flex-direction: column;
-  // align-items: center;
   @include flex;
 }
 
 ///- HERO
 
 .hero {
-  // padding: 0 1rem;
   @include padding-sections;
-  position: relative;
-  width: 100vw;
+  // position: relative;
+  width: 100%;
   height: 60vw;
   background-size: cover;
   background-position: center;
@@ -141,54 +129,32 @@ a {
       rgba(50, 50, 50, 0.5)
     ),
     url(../assets/images/hero-bio.jpg);
-  // display: flex;
-  // align-items: center;
-  // margin-bottom: 1rem;
-  @include flex(row, normal);
 
+  @include flex(row, normal);
   @include tablet {
     height: 50vh;
-    // padding-left: 2rem;
-    // padding: 0 2rem;
-  }
-  @include desktop {
-    // padding: 0 7rem;
   }
 
   &__page-header {
     @include header;
     color: $white;
-    @include tablet {
-      // padding-left: 2rem;
-    }
-    @include desktop {
-      // padding-left: 7rem;
-    }
+    @include tablet;
   }
 }
 
-/// - ABOUT SECTION
+///- ABOUT SECTION
 
 .about {
-  // padding: 0 1rem;
   @include padding-sections;
   @include tablet {
-    // display: flex;
-    // flex-direction: column;
-    // align-items: center;
-    // padding: 0 2rem;
     @include flex();
   }
-  // @include desktop {
-  //   padding: 0 7rem;
-  // }
   &__header {
     @include section-header;
     @include tablet {
       align-self: flex-start;
     }
     @include desktop {
-      // padding-left: 7rem;
       padding-bottom: 2rem;
     }
   }
@@ -222,7 +188,6 @@ a {
     line-height: 1.5rem;
 
     @include tablet {
-      // margin-top: 1rem;
       font-size: 1.375rem;
       line-height: 2rem;
     }
@@ -237,7 +202,6 @@ a {
   &__quote-container {
     padding-top: 0.25rem;
     @include desktop {
-      // width: 75%;
       padding-top: 0.5rem;
     }
   }
@@ -265,51 +229,27 @@ a {
 }
 
 /// - GALLERY SECTION
-//!!!!too much padding between hallery and about.. think about puttig about section in its own sections aka header+image ,quote, copy. then add 1rem to end of copy instead of top of gallery or none at all at about section end
+
 .gallery {
   @include padding-sections;
   background-color: $alabaster;
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: center;
   flex-wrap: wrap;
   @include flex(column, center, center);
-  width: 100vw;
-  // padding: 0 1rem;
-  // margin-bottom: 1rem;
-  // gap: 7vw;
-  // margin-bottom: 7vw;
-  // gap: 1rem;
+  width: 100%;
 
   @include tablet {
-    // display: flex;
-    // flex-direction: row;
-    // justify-content: space-between;
     @include flex(row, space-between);
     flex-wrap: wrap;
-    // padding: 0 2rem;
     padding-bottom: 1.5rem;
-    // gap: 1.5rem;
   }
   @include desktop {
-    // padding: 0 7rem;
     padding-bottom: 2rem;
     justify-content: space-around;
   }
 
-  // &__container {
-  //   @include tablet {
-  //     margin-left: 2rem;
-  //     display: flex;
-  //     flex-direction: row;
-  //     flex-wrap: wrap;
-  //     justify-content: center;
-  // }
-  // }
   &__header {
-    align-self: flex-start;
-
     @include section-header;
+    align-self: flex-start;
     @include tablet {
       align-self: flex-start;
       width: 100%;
@@ -317,7 +257,6 @@ a {
   }
   &__image {
     width: 100%;
-    // gap: 1rem;
     padding-bottom: 1rem;
     filter: grayscale(100);
     &:hover {
@@ -325,9 +264,6 @@ a {
     }
     @include tablet {
       width: 31%;
-      // padding: 0 0.5rem;
-      // column-gap: 1rem;
-      // padding-bottom: 0;
       gap: 1rem;
     }
   }
@@ -336,18 +272,13 @@ a {
 // --- FOOTER ---//
 
 .footer {
+  @include padding-sections;
   background-color: $bandsite-black;
   color: $white;
-  // display: flex;
-  // flex-direction: column;
-  // align-items: flex-start;
   @include flex(column, normal, flex-start);
   padding-bottom: 1rem;
-  @include padding-sections;
-  // width: 100vw;
   @include tablet {
     padding-bottom: 3rem;
-    // padding-top: 0;
   }
   @include desktop {
     padding-bottom: 4rem;
@@ -355,22 +286,14 @@ a {
   &__top {
     @include tablet {
       width: 100%;
-      // display: flex;
-      // align-items: baseline;
-      // justify-content: space-between;
       @include flex(_, space-between, baseline);
     }
   }
   &__container {
-    // display: flex;
-    // flex-direction: column;
     @include flex(column, _, _);
     @include tablet {
-      // flex-direction: row;
-      // align-items: baseline;
       @include flex(row, _, baseline);
     }
-    // align-items: baseline;
   }
 
   &__header {
@@ -380,10 +303,7 @@ a {
     }
   }
   &__link {
-    // @include link;
     color: $silver;
-
-    // &--email {
     &:hover {
       color: $white;
       transform: scale(1.2);
@@ -391,19 +311,17 @@ a {
   }
   &__icon {
     height: 1.5rem;
-    &:hover {
-      transform: scale(1.2);
-    }
     @include tablet {
       height: 1.5rem;
+    }
+
+    &:hover {
+      transform: scale(1.2);
     }
   }
 
   &__social {
     width: 85%;
-    // display: flex;
-
-    // justify-content: space-between;
     @include flex(_, space-between, _);
     padding-top: 0.5rem;
     @include tablet {
@@ -413,18 +331,13 @@ a {
     }
   }
   &__contact {
-    // padding-bottom: 1rem;
     @include tablet {
       width: 100%;
-      // display: flex;
-      // justify-content: space-between;
       @include flex(_, space-between, _);
     }
   }
   &__contact-block {
     @include tablet {
-      // padding: 1rem;
-      // padding-right: 3rem;
     }
   }
   &__copy {
@@ -433,19 +346,15 @@ a {
     &--title {
       font-weight: 600;
     }
-    //     &__copy-email {
-    //     }
   }
 
   &__logo {
     visibility: visible;
-    padding-top: 4rem;
+    margin-top: 4rem;
     @include tablet {
       visibility: hidden;
       padding-top: 0;
-      // width: 33%;
     }
-    //   &__copyright{
   }
   &__logo-top {
     visibility: hidden;

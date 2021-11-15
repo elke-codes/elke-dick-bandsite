@@ -4,6 +4,7 @@
 @use "./mixins" as *;
 @use "./variables" as *;
 
+//- AvenirNext LT Pro
 @font-face {
   font-family: "AvenirNext LT Pro";
   src: url("../assets/fonts/AvenirNextLTPro-Demi.woff2") format("woff2"),
@@ -30,12 +31,11 @@
 
 // --- MOBILE FIRST--- //
 
-// PAGE HEADER &
+// PAGE HEADER
 @mixin header {
   font-size: 1.5rem;
   line-height: 2rem;
   font-weight: 600;
-  // margin-left: 1rem;
   //padding in styleguide doesn't match mockup
   // @include padding-headers;
   @include tablet {
@@ -56,7 +56,6 @@
     font-size: 2.25rem;
     line-height: 2.75rem;
     font-weight: 600;
-    // margin-left: 2rem;
   }
 }
 
@@ -72,7 +71,7 @@
   }
 }
 
-// BODY COPY &
+// BODY COPY
 @mixin copy {
   font-size: 0.8125rem;
   line-height: 1.125rem;
@@ -96,18 +95,10 @@
 
 // PADDING HEADERS
 @mixin padding-headers {
-  // padding-top: 1.5rem;
-  // padding-bottom: 1rem;
   padding-top: 1.5rem;
   padding-bottom: 0.5rem;
   @include tablet {
     padding-top: 3rem;
     padding-bottom: 1rem;
-    // padding-left: 2rem;
   }
 }
-// // LINKS
-// @mixin link {
-//   text-decoration: none;
-//   color: $white;
-// }
