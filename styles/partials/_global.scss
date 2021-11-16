@@ -1,0 +1,204 @@
+/// GLOBAL SCSS PARTIAL ///
+@use "./typography" as *;
+@use "./colors" as *;
+@use "./mixins" as *;
+@use "./variables" as *;
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "AvenirNext LT Pro";
+  color: $bandsite-black;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+/// - LOGO
+
+.logo {
+  background-color: $bandsite-black;
+
+  &__image {
+    max-height: 1.25rem;
+    max-width: 7.5rem;
+    width: 7.5rem;
+  }
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+// --- HEADER --- //
+.header {
+  width: 100%;
+  background-color: $bandsite-black;
+  @include flex();
+  @include tablet {
+    flex-direction: row;
+  }
+  @include desktop {
+  }
+  &__logo {
+    padding-top: 1rem;
+    @include tablet {
+      padding-top: 0;
+      padding-left: 3rem;
+    }
+    @include desktop {
+      padding-left: 7rem;
+    }
+  }
+
+  /// - NAVIGATION
+  // line that rests with bottom margin of nav bar indicates
+  // active: $white, bold, underline
+  // hover: $white
+  // inactive: $mercury
+
+  &__nav {
+    width: 100%;
+    display: flex;
+  }
+  &__nav-link {
+    color: $white;
+    @include copy;
+    width: 50%;
+    @include flex(_, space-evenly, _);
+    padding: 0.5rem 0;
+    @include tablet {
+      font-size: 1rem;
+      padding: 1.5rem 0;
+      width: fit-content;
+      margin: 0 2rem;
+    }
+
+    &--active {
+      border-bottom: 0.2rem solid $white;
+      font-weight: 600;
+    }
+    &--inactive {
+      color: $mercury;
+      font-weight: 400;
+      &:hover {
+        border-bottom: 0.125rem dotted $white;
+      }
+    }
+
+    &:hover {
+      border-top: 0.125rem dotted $silver;
+      border-radius: 50%;
+      font-weight: 600;
+    }
+  }
+}
+
+// --- FOOTER ---//
+
+.footer {
+  @include padding-sections;
+  background-color: $bandsite-black;
+  color: $white;
+  @include flex(column, normal, flex-start);
+  padding-bottom: 1rem;
+  @include tablet {
+    padding-bottom: 3rem;
+  }
+  @include desktop {
+    padding-bottom: 4rem;
+  }
+  &__top {
+    @include tablet {
+      width: 100%;
+      @include flex(_, space-between, baseline);
+    }
+  }
+  &__container {
+    @include flex(column, _, _);
+    @include tablet {
+      @include flex(row, _, baseline);
+    }
+  }
+
+  &__header {
+    @include section-header;
+    @include tablet {
+      padding-right: 2.25rem;
+    }
+  }
+  &__link {
+    color: $silver;
+    &:hover {
+      color: $white;
+      transform: scale(1.2);
+    }
+  }
+  &__icon {
+    height: 1.5rem;
+    @include tablet {
+      height: 1.5rem;
+    }
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__social {
+    width: 85%;
+    @include flex(_, space-between, _);
+    padding-top: 0.5rem;
+    @include tablet {
+      flex-direction: row;
+      height: fit-content;
+      width: 8rem;
+    }
+  }
+  &__contact {
+    @include tablet {
+      width: 100%;
+      @include flex(_, space-between, _);
+    }
+  }
+  &__contact-block {
+    @include tablet {
+    }
+  }
+  &__copy {
+    @include footer-copy;
+    padding-top: 1rem;
+    &--title {
+      font-weight: 600;
+    }
+  }
+
+  &__logo {
+    visibility: visible;
+    margin-top: 4rem;
+    @include tablet {
+      visibility: hidden;
+      padding-top: 0;
+    }
+  }
+  &__logo-top {
+    visibility: hidden;
+
+    @include tablet {
+      visibility: visible;
+    }
+  }
+}

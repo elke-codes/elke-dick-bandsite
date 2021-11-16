@@ -2,7 +2,6 @@
 @use "./variables" as *;
 
 // MEDIA QUERIES //
-
 @mixin tablet {
   @media screen and (min-width: $tablet-breakpoint) {
     @content;
