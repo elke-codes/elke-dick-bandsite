@@ -1,11 +1,12 @@
-/// --- SHOWS SCSS --- ///
+/// --- SHOWS PAGE SCSS --- ///
+
 @use "./partials/mixins" as *;
 @use "./partials/typography" as *;
 @use "./partials/variables" as *;
 @use "./partials/colors" as *;
 @use "./partials/global" as *;
 
-// - HERO SHOWS
+/// - HERO SHOWS
 
 .hero {
   @include padding-sections;
@@ -39,6 +40,7 @@
   }
 }
 
+// TO DO : figure out how to style this so it looks like the mockup
 .soundcloud {
   //code from soundcloud
   font-size: 10px;
@@ -55,4 +57,38 @@
   height: 25%;
   width: 70%;
   border-radius: 5%;
+}
+
+.shows {
+  // @include padding-sections;
+
+  &__title {
+    @include section-header;
+    //gotta figure this one out
+    @include padding-sections;
+  }
+}
+
+.show {
+  @include padding-show;
+  border-bottom: 1px solid $mercury;
+  @include tablet {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    @include tablet {
+      display: none;
+    }
+  }
+
+  // &__date {
+  // }
+
+  // &__venue {
+  // }
+
+  // &__location {
+  // }
 }

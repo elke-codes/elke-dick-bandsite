@@ -371,4 +371,57 @@ a {
   height: 25%;
   width: 70%;
   border-radius: 5%;
+}
+
+.shows__title {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 600;
+  padding-top: 1.5rem;
+  padding-bottom: 0.5rem;
+  padding: 0 1rem;
+}
+@media screen and (min-width: 768px) {
+  .shows__title {
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .shows__title {
+    font-size: 2.25rem;
+    line-height: 2.75rem;
+    font-weight: 600;
+  }
+}
+@media screen and (min-width: 768px) {
+  .shows__title {
+    padding: 0 2rem;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .shows__title {
+    padding: 0 7rem;
+  }
+}
+
+.show {
+  padding: 16px;
+  border-bottom: 1px solid #e1e1e1;
+}
+@media screen and (min-width: 768px) {
+  .show {
+    padding: 24px 18px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .show {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+@media screen and (min-width: 768px) {
+  .show__title {
+    display: none;
+  }
 }/*# sourceMappingURL=shows.css.map */

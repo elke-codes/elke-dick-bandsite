@@ -1,4 +1,5 @@
-/// GLOBAL SCSS PARTIAL ///
+/// --- GLOBAL SCSS ///
+
 @use "./typography" as *;
 @use "./colors" as *;
 @use "./mixins" as *;
@@ -104,6 +105,28 @@ a {
       border-radius: 50%;
       font-weight: 600;
     }
+  }
+}
+
+
+// --- MAIN --- //
+.button {
+  height: 2.5rem;
+  width: 100%;
+  border-radius: 0.25rem;
+  color: $white;
+  background-color: $bandsite-black;
+  border-color: $bandsite-black;
+  // margin-top: 1rem;
+  @include tablet {
+    min-width: 9.375rem;
+    width: fit-content;
+    padding: 0 2rem;
+  }
+
+  &:hover {
+    background-color: $bandsite-darkblack;
+    border-color: $bandsite-darkblack;
   }
 }
 

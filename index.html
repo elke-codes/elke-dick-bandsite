@@ -29,7 +29,7 @@
         <a href="index.html" class="logo__link"
           ><img
             src="./assets/logo/Logo-bandsite.svg"
-            alt=""
+            alt="bandsite logo with the word BANDSITE in white on black background"
             class="logo__image"
         /></a>
       </div>
@@ -48,7 +48,7 @@
     </header>
 
     <!-- MAIN -->
-    <main class="main">
+    <main class="bio-main">
       <!-- HERO -- part of header? -->
       <section class="hero">
         <!-- hero image -background -->
@@ -121,32 +121,32 @@
         />
         <img
           src="/assets/images/Photo-gallery-2.jpg"
-          alt="person dancing with arms up and big smile"
+          alt="person dancing at concert with arms up and big smile"
           class="gallery__image"
         />
         <img
           src="/assets/images/Photo-gallery-3.jpg"
-          alt="hand of people in crowd "
+          alt="hands of people in crowd at concert"
           class="gallery__image"
         />
         <img
           src="/assets/images/Photo-gallery-4.jpg"
-          alt="backview of person watching stage"
+          alt="backview of person watching stage at concert"
           class="gallery__image"
         />
         <img
           src="/assets/images/Photo-gallery-5.jpg"
-          alt="hands in the air as confettingstings come down from the stage"
+          alt="hands in the air as confettingstings come down from the concert stage"
           class="gallery__image"
         />
         <img
           src="/assets/images/Photo-gallery-6.jpg"
-          alt="singer surrounded by confetty"
+          alt="singer surrounded by confetti"
           class="gallery__image"
         />
         <img
           src="/assets/images/Photo-gallery-7.jpg"
-          alt="view of crowd and intensely colorful stage"
+          alt="view of crowd at concert and intensely colorful stage"
           class="gallery__image"
         />
         <img
@@ -156,12 +156,84 @@
         />
         <img
           src="/assets/images/Photo-gallery-9.jpg"
-          alt="confetti comes down on crowd"
+          alt="confetti comes down on crowd at concert"
           class="gallery__image"
         />
       </section>
-    </main>
 
+
+    <!-- COMMENTS SECTION -->
+    <section class="comments">
+      <!-- comments section header -->
+      <h2 class="comments__header">Join the Conversation</h2>
+      <div class="comments__new"></div>
+
+
+        <!-- comments form -->
+        <from class="comments__form">
+          <div class="comments__form-identity">
+                    <!-- avatar -->
+            <div class="avatar">
+              <div class="avatar__placeholder">
+                <img
+                  src="./assets/images/Mohan-muruge.jpg"
+                  alt="close-up from a man with an excellent moustache, looking sternly to the left, on a purple background"
+                  class="avatar__image"
+                />
+              </div>
+            </div>
+            <div class="comments__form-name">
+              <!-- name label -->
+              <label for="name">Name</label>
+              <!-- name input -->
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Enter your name"
+                class="comments__form-field"
+              />
+            </div>
+          </div>
+          <div class="comments__form-comment">
+            <!-- comment label -->
+            <label for="comment">Comment</label>
+            <!-- comment input -->
+            <input
+              type="text"
+              name="comment"
+              placeholder="Add a new comment"
+              id="comment"
+              class="comments__form-field"
+            />
+          </div>
+          <button type="submit" class="button">COMMENT</button>
+        </from>
+      </div>
+
+      <!-- for visualisation only, create with dom manipulation -->
+      <div class="comments__old">
+        <!-- <article class="comment">
+          <div class="avatar">
+            <div class="avatar__placeholder">
+              <img
+                src="./assets/images/Mohan-muruge.jpg"
+                alt="close-up from a man with an excellent moustache, looking sternly to the left, on a purple background"
+                class="avatar__image"
+              />
+            </div>
+          </div>
+          <p class="comments__name">Connor Walton</p>
+          <p class="comments__date">02/17/2021</p>
+          <p class="comments__comment">
+            This is art. This is inexplicable magic expressed in the purest way,
+            everything that makes up this majestic work deserves reverence. Let
+            us appreciate this for what it is and what it contains.
+          </p>
+        </article>
+      </div> -->
+    </section>
+  </main>
     <!-- FOOTER -->
     <footer class="footer">
       <div class="footer__top">
@@ -298,6 +370,7 @@
       </p>
     </footer>
 
+    <!-- SCRIPTS -->
     <script src="./scripts/index-page.js"></script>
     <script src="./scripts/build-shows-page.js"></script>
     <script src=""></script>
