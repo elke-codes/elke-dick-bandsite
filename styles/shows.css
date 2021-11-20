@@ -1,6 +1,6 @@
 @font-face {
   font-family: "AvenirNext LT Pro";
-  src: url("../assets/fonts/AvenirNextLTPro-Demi.woff2") format("woff2"), url("../../assets/fonts/AvenirNextLTPro-Demi.woff") format("woff");
+  src: url("../assets/fonts/AvenirNextLTPro-Demi.woff2") format("woff2"), url("../assets/fonts/AvenirNextLTPro-Demi.woff") format("woff");
   font-weight: 600;
   font-style: normal;
 }
@@ -131,6 +131,28 @@ a {
   border-top: 0.125rem dotted #afafaf;
   border-radius: 50%;
   font-weight: 600;
+}
+
+.button {
+  height: 2.5rem;
+  width: 100%;
+  border-radius: 0.25rem;
+  color: #ffffff;
+  background-color: #323232;
+  border-color: #323232;
+}
+@media screen and (min-width: 768px) {
+  .button {
+    min-width: 9.375rem;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: 0 2rem;
+  }
+}
+.button:hover {
+  background-color: #000000;
+  border-color: #000000;
 }
 
 .footer {
@@ -373,6 +395,19 @@ a {
   border-radius: 5%;
 }
 
+.shows {
+  padding: 0 1rem;
+}
+@media screen and (min-width: 768px) {
+  .shows {
+    padding: 0 2rem;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .shows {
+    padding: 0 7rem;
+  }
+}
 .shows__title {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -418,10 +453,5 @@ a {
   .show {
     display: flex;
     justify-content: space-between;
-  }
-}
-@media screen and (min-width: 768px) {
-  .show__title {
-    display: none;
   }
 }/*# sourceMappingURL=shows.css.map */

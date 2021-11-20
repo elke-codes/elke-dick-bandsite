@@ -60,7 +60,7 @@
 }
 
 .shows {
-  // @include padding-sections;
+  @include padding-sections;
 
   &__title {
     @include section-header;
@@ -79,7 +79,7 @@
 
   &__title {
     @include tablet {
-      display: none;
+      // display: none;
     }
   }
 

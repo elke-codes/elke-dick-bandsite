@@ -180,22 +180,28 @@
     }
   }
 
-  &__new {
-    // display: flex;
-  }
-  &__form {
-    // padding-left: 16px;
-  }
+  // &__info{
+  //  @include copy;
+  // }
+&__name{
+  @include copy;
+}
+  // &__new {
+  //   // display: flex;
+  // }
+  // &__form {
+  //   // padding-left: 16px;
+  // }
 
-  &__form-identity {
-    // padding-bottom: 16px;
-  }
+  // &__form-identity {
+  //   // padding-bottom: 16px;
+  // }
 
-  &__form-comment {
-    // display: flex;
-    // flex-direction: column;
-    // margin-left: 2rem;
-  }
+  // &__form-comment {
+  //   // display: flex;
+  //   // flex-direction: column;
+  //   // margin-left: 2rem;
+  // }
 
   &__form-field {
     min-height: 2.25rem;

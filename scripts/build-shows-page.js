@@ -62,6 +62,9 @@ showsTitle.classList.add(".shows__title");
 showsTitle.innerText = "Shows";
 showsSection.appendChild(showsTitle);
 
+
+///in a function? or available globally? or
+/// definitely re write to for each ()
 for (let i = 0; i < showsList.length; i++) {
   let currentShow = showsList[i];
 
@@ -78,72 +81,35 @@ function createShows(currentShow) {
   showArticle.classList.add(".show");
   showsSection.appendChild(showArticle);
 
-  // create date 
-  const dateContainer = createDate(currentShow);
+  // // create date 
+  const dateContainer = createShowInfo("DATE", currentShow.date);
   showArticle.appendChild(dateContainer);
-
-  //create venue 
-  const venueContainer = createVenue(currentShow);
+  // //create venue 
+  const venueContainer = createShowInfo("VENUE", currentShow.venue);
   showArticle.appendChild(venueContainer);
-
-  //create location
-  const locationContainer = createLocation(currentShow);
+  // //create location
+  const locationContainer = createShowInfo("LOCATION", currentShow.location);
   showArticle.appendChild(locationContainer);
 
-
   return showArticle;
-
 }
 
-
-function createDate(currentShow) {
+// function createShowInfo
+function createShowInfo(title, value) {
 
   const dateContainer = document.createElement("div");
 
   const dateTitle = document.createElement("h4")
-  dateTitle.classList.add(".show__title");
-  dateTitle.innerText = "DATE";
+  dateTitle.classList.add(".show__info-title");
+  dateTitle.innerText = title;
   dateContainer.appendChild(dateTitle);
 
   const showDate = document.createElement("p");
-  showDate.classList.add(".show__date");
-  showDate.innerText = currentShow.date;
+  showDate.classList.add(".show__info-value");
+  showDate.innerText = value;
   dateContainer.appendChild(showDate);
 
   return dateContainer;
 };
 
 
-function createVenue(currentShow) {
-  const venueContainer = document.createElement("div");
-
-  const venueTitle = document.createElement("h4");
-  venueTitle.classList.add("show__title");
-  venueTitle.innerText = "VENUE";
-  venueContainer.appendChild(venueTitle);
-
-  const showVenue = document.createElement("p");
-  showVenue.classList.add(".show__venue");
-  showVenue.innerText = currentShow.venue;
-  venueContainer.appendChild(showVenue);
-  ;
-  return venueContainer
-}
-
-
-function createLocation(currentShow) {
-  const locationContainer = document.createElement("div");
-
-
-  const locationTitle = document.createElement("h4");
-  locationTitle.classList.add("show__title");
-  locationTitle.innerText = "LOCATION";
-  locationContainer.appendChild(locationTitle);
-
-  const showLocation = document.createElement("p");
-  showLocation.classList.add(".show__location");
-  showLocation.innerText = currentShow.location;
-  locationContainer.appendChild(showLocation);
-
-  return locationContainer;
-}

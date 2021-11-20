@@ -1,6 +1,6 @@
 @font-face {
   font-family: "AvenirNext LT Pro";
-  src: url("../assets/fonts/AvenirNextLTPro-Demi.woff2") format("woff2"), url("../../assets/fonts/AvenirNextLTPro-Demi.woff") format("woff");
+  src: url("../assets/fonts/AvenirNextLTPro-Demi.woff2") format("woff2"), url("../assets/fonts/AvenirNextLTPro-Demi.woff") format("woff");
   font-weight: 600;
   font-style: normal;
 }
@@ -131,6 +131,28 @@ a {
   border-top: 0.125rem dotted #afafaf;
   border-radius: 50%;
   font-weight: 600;
+}
+
+.button {
+  height: 2.5rem;
+  width: 100%;
+  border-radius: 0.25rem;
+  color: #ffffff;
+  background-color: #323232;
+  border-color: #323232;
+}
+@media screen and (min-width: 768px) {
+  .button {
+    min-width: 9.375rem;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: 0 2rem;
+  }
+}
+.button:hover {
+  background-color: #000000;
+  border-color: #000000;
 }
 
 .footer {
@@ -614,6 +636,22 @@ a {
     font-size: 2.25rem;
     line-height: 2.75rem;
     font-weight: 600;
+  }
+}
+.comments__name {
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  font-weight: 400;
+}
+@media screen and (min-width: 768px) {
+  .comments__name {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .comments__name {
+    font-size: 1rem;
   }
 }
 .comments__form-field {
