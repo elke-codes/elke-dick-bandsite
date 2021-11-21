@@ -140,6 +140,9 @@ a {
   color: #ffffff;
   background-color: #323232;
   border-color: #323232;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 1rem;
 }
 @media screen and (min-width: 768px) {
   .button {
@@ -148,6 +151,7 @@ a {
     width: -moz-fit-content;
     width: fit-content;
     padding: 0 2rem;
+    margin-bottom: 0;
   }
 }
 .button:hover {
@@ -605,20 +609,20 @@ a {
   }
 }
 
-.comments {
+.comment {
   padding: 0 1rem;
 }
 @media screen and (min-width: 768px) {
-  .comments {
+  .comment {
     padding: 0 2rem;
   }
 }
 @media screen and (min-width: 1280px) {
-  .comments {
+  .comment {
     padding: 0 7rem;
   }
 }
-.comments__header {
+.comment__header {
   font-size: 1.5rem;
   line-height: 2rem;
   font-weight: 600;
@@ -626,35 +630,69 @@ a {
   padding-bottom: 0.5rem;
 }
 @media screen and (min-width: 768px) {
-  .comments__header {
+  .comment__header {
     padding-top: 3rem;
     padding-bottom: 1rem;
   }
 }
 @media screen and (min-width: 768px) {
-  .comments__header {
+  .comment__header {
     font-size: 2.25rem;
     line-height: 2.75rem;
     font-weight: 600;
   }
 }
-.comments__name {
+.comment__name {
   font-size: 0.8125rem;
   line-height: 1.125rem;
   font-weight: 400;
+  font-weight: 700;
 }
 @media screen and (min-width: 768px) {
-  .comments__name {
+  .comment__name {
     font-size: 0.875rem;
     line-height: 1.375rem;
   }
 }
 @media screen and (min-width: 1280px) {
-  .comments__name {
+  .comment__name {
     font-size: 1rem;
   }
 }
-.comments__form-field {
+.comment__date {
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  font-weight: 400;
+  color: #afafaf;
+}
+@media screen and (min-width: 768px) {
+  .comment__date {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .comment__date {
+    font-size: 1rem;
+  }
+}
+.comment__comment {
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  font-weight: 400;
+}
+@media screen and (min-width: 768px) {
+  .comment__comment {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .comment__comment {
+    font-size: 1rem;
+  }
+}
+.comment__form-field {
   min-height: 2.25rem;
   width: 100%;
   border-radius: 0.25rem;
@@ -663,7 +701,7 @@ a {
   border: 1px solid #e1e1e1;
 }
 @media screen and (min-width: 768px) {
-  .comments__form-field {
+  .comment__form-field {
     min-height: 3rem;
     padding: 1rem;
   }

@@ -20,27 +20,27 @@ const showsList = [
   },
 
   {
-    date: new Date(2021 / 09 / 2021).toDateString(),
+    date: new Date("Tue Sept 21 2021").toDateString(),
     venue: "Pier 3 East",
     location: "San Francisco, CA",
   },
   {
-    date: 2021 / 10 / 15,
+    date: new Date("Fri Oct 15 2021").toDateString(),
     venue: "View Lounge",
     location: "San Francisco, CA",
   },
   {
-    date: 2021 / 11 / 06,
+    date: new Date("Sat Nov 06 2021").toDateString(),
     venue: "Hyatt Agency",
     location: "San Francisco, CA",
   },
   {
-    date: 2021 / 11 / 26,
+    date: new Date("Fri Nov 26 2021").toDateString(),
     venue: "Moscow Center",
     location: "San Francisco, CA",
   },
   {
-    date: 2020 / 12 / 15,
+    date: new Date("Wed Dec 15 2021").toDateString(),
     venue: "Press Club",
     location: "San Francisco, CA",
   },
@@ -57,33 +57,41 @@ const showsSection = document.querySelector(".shows");
 // for each show in the array run the createshows function and append the showArticle of the current show to the showsSection
 
 //create shows section heading
-const showsTitle = document.createElement('h2');
-showsTitle.classList.add(".shows__title");
-showsTitle.innerText = "Shows";
-showsSection.appendChild(showsTitle);
+const showsHeader = document.createElement('h2');
+showsHeader.classList.add("shows__header");
+showsHeader.innerText = "Shows";
+showsSection.appendChild(showsHeader);
 
 
 ///in a function? or available globally? or
 /// definitely re write to for each ()
-for (let i = 0; i < showsList.length; i++) {
-  let currentShow = showsList[i];
+// for (let i = 0; i < showsList.length; i++) {
+//   let currentShow = showsList[i];
+
+//   let showArticle = createShows(currentShow);
+
+//   showsSection.appendChild(showArticle);
+// }
+
+showsList.forEach(currentShow => {
 
   let showArticle = createShows(currentShow);
 
   showsSection.appendChild(showArticle);
-}
+});
 
 //createShows function
 function createShows(currentShow) {
 
   //create show article wrapper
   const showArticle = document.createElement("article");
-  showArticle.classList.add(".show");
+  showArticle.classList.add("show");
   showsSection.appendChild(showArticle);
 
   // // create date 
-  const dateContainer = createShowInfo("DATE", currentShow.date);
+  const dateContainer = createDate("DATE", currentShow.date);
   showArticle.appendChild(dateContainer);
+
   // //create venue 
   const venueContainer = createShowInfo("VENUE", currentShow.venue);
   showArticle.appendChild(venueContainer);
@@ -91,25 +99,77 @@ function createShows(currentShow) {
   const locationContainer = createShowInfo("LOCATION", currentShow.location);
   showArticle.appendChild(locationContainer);
 
+  //create button
+  const button = document.createElement("button");
+  button.classList.add("button");
+  button.innerText = "BUY TICKETS";
+  showArticle.appendChild(button);
+
   return showArticle;
 }
 
 // function createShowInfo
 function createShowInfo(title, value) {
 
-  const dateContainer = document.createElement("div");
+  const infoContainer = document.createElement("div");
+  infoContainer.classList.add("show__info-container");
 
-  const dateTitle = document.createElement("h4")
-  dateTitle.classList.add(".show__info-title");
-  dateTitle.innerText = title;
-  dateContainer.appendChild(dateTitle);
+  const infoTitle = document.createElement("h3")
+  infoTitle.classList.add("show__info-title");
+  infoTitle.innerText = title;
+  infoContainer.appendChild(infoTitle);
 
-  const showDate = document.createElement("p");
-  showDate.classList.add(".show__info-value");
-  showDate.innerText = value;
-  dateContainer.appendChild(showDate);
+  const infoValue = document.createElement("p");
+  infoValue.classList.add("show__info-value");
+  infoValue.innerText = value;
+  infoContainer.appendChild(infoValue);
 
-  return dateContainer;
+  return infoContainer;
 };
+
+function createDate(title, value){
+  const infoDateContainer = document.createElement("div");
+  infoDateContainer.classList.add("show__info-container");
+
+
+  const infoDateTitle = document.createElement("h3")
+  infoDateTitle.classList.add("show__info-title");
+  infoDateTitle.innerText = title;
+  infoDateContainer.appendChild(infoDateTitle);
+
+  const infoDateValue = document.createElement("p");
+  infoDateValue.classList.add("show__info-value", "show__info-value--date");
+  infoDateValue.innerText = value;
+  infoDateContainer.appendChild(infoDateValue);
+
+  return infoDateContainer;
+}
+
+function createBuyButton(){
+
+}
+
+
+//give active class to clicked show
+
+//https://stackoverflow.com/questions/45112279/add-a-class-to-target-and-remove-class-from-other-elements-with-the-same-class-n
+  const clickedShow = document.getElementsByClassName("show");
+  // console.log(typeof clickedShow);
+
+  //TODO when brain is back: rewrite in hof, but it s an object...
+  for (let i = 0; i < clickedShow.length; i++) {
+    clickedShow[i].addEventListener("click", changeActiveStatus);
+  }
+
+  function changeActiveStatus(e) {
+    const oldActive = document.getElementsByClassName("active");
+    console.log(typeof oldActive);
+
+      //TODO when brain is back: rewrite in hof, but it s an object...
+    for (let i = 0; i < oldActive.length; i++) {
+      oldActive[i].classList.remove("active");
+    }
+    e.currentTarget.classList.add("active");
+  }
 
 

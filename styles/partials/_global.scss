@@ -108,7 +108,6 @@ a {
   }
 }
 
-
 // --- MAIN --- //
 .button {
   height: 2.5rem;
@@ -117,11 +116,14 @@ a {
   color: $white;
   background-color: $bandsite-black;
   border-color: $bandsite-black;
-  // margin-top: 1rem;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 1rem;
   @include tablet {
     min-width: 9.375rem;
     width: fit-content;
     padding: 0 2rem;
+    margin-bottom: 0;
   }
 
   &:hover {

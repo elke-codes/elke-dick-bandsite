@@ -1,9 +1,9 @@
 
 // // create comments array, with objects for each comment
 // //comments must have:
-
-// // - a name - a timestamp - the comment text
-//i've also added an image
+// - a name - a timestamp - the comment text
+//TODO add to possibility to add an image
+// const avatar = document.querySelector(".avatar");
 const comments = [
   {
 
@@ -13,10 +13,9 @@ const comments = [
     that makes up this majestic work
     deserves reverence. Let us appreciate
     this for what it is and what it contains.`,
-    dateTimestamp: "02/17/2021",
-    // as the right format, for new comment add current date in the right format
-    img: ""
-    // url("../assets/images/band.jpg")
+    dateTimestamp: (new Date("02/17/2021")).toLocaleDateString('en-US')
+    ,
+    img: "https://picsum.photos/36"
   },
   {
     name: "Emilie Beach",
@@ -25,9 +24,9 @@ const comments = [
     perfection. If there was one day of my
     life I could relive, this would be it. What
     an incredible day.`,
-    dateTimestamp: "01/09/2021",
-    //as the right format, for new comment add current date in the right format
-    img: ""
+    dateTimestamp: (new Date("01/09/2021")).toLocaleDateString('en-US'),
+
+
   },
   {
     name: "Miles Acosta",
@@ -36,42 +35,29 @@ const comments = [
     me goosebumps. Shivers straight down
     my spine. What a beautiful expression of
     creativity. Can t get enough.`,
-    dateTimestamp: "12/20/2020",
-    // as the right format, for new comment add current date in the right format
-    img: ""
+    dateTimestamp: (new Date("12/20/2020")).toLocaleDateString('en-US')
+    ,
+
+    img: "https://i.pravatar.cc/36"
   }
 ]
 
-// /// --   COMMENTS SECTION
-
-// // There must be a button that allows a user to add a new comment.
-// // The user must be able to add their name and a comment.
-// // The comments must be added such that the newest comments are at the top.
-// // 3 Default comments must be displayed when the page first loads.
+// https://stackoverflow.com/questions/3177836/how-to-format-time-since-xxx-e-g-4-minutes-ago-similar-to-stack-exchange-site
 
 
+/// --   COMMENTS SECTION
 
-// // No template literals should be used. All dynamic HTML should be added to DOM via DOM Methods for individual elements. Avoid bulk assigning stringified HTML using innerHTML
-
-
-
-
-
-
-
-
-
-// // You must have a function called displayComment() that takes in one comment object as a parameter and displays it on the page using JavaScript DOM manipulation.
-
-//select comments__old 
+//select comments container
 const commentsContainer = document.querySelector(".comments__container");
-// function display comment 
+
+// function to render comments 
 
 function renderComments(comments) {
   for (let i = 0; i < comments.length; i++) {
     // get single comment
     const currentComment = comments[i];
 
+    //add all comments in the comment array to the page
     let commentArticle = displayComment(currentComment);
 
     commentsContainer.appendChild(commentArticle);
@@ -79,50 +65,34 @@ function renderComments(comments) {
   }
 };
 
+//render the comments when the page first loads
+// and again when a new comment is added through the form
 renderComments(comments);
-
-// clear all the comments from the comment container
-function clearComments(commentsContainer) {
-  //delete children
-  //while the commentscontainer has a child, remove the child
-  //  https://www.javascripttutorial.net/dom/manipulating/remove-all-child-nodes/
-
-  while (commentsContainer.firstChild) {
-    commentsContainer.removeChild(commentsContainer.firstChild);
-  }
-}
 
 
 //create comment 
 function displayComment(currentComment) {
 
+  //create article container for every comment
   const commentArticle = document.createElement("article");
   commentArticle.classList.add("comment");
   commentsContainer.appendChild(commentArticle);
 
+  //create avatar for every comment
   const avatar = createAvatar(currentComment);
   commentArticle.appendChild(avatar);
 
+  //create commentInfo for every comment
   const commentInfo = createComment(currentComment);
   commentArticle.appendChild(commentInfo);
 
-
   return commentArticle;
-
 }
 
-// // function displayComment (comment){
-//    // Constructs a new comment object
-//   // a name comment date img
-// const commentsOld = document.querySelector(".comments__old");
 
-// forEach()
-
+//create the commentInformation
 function createComment(currentComment) {
 
-  // const article = document.createElement("article");
-  // article.classList.add("comment");
-  // commentArticle.appendChild(article)
   const commentInfo = document.createElement("div");
   commentInfo.classList.add("comment__info");
 
@@ -146,28 +116,29 @@ function createComment(currentComment) {
 
 }
 
-
+//create the comment avatar
 function createAvatar(currentComment) {
-
 
   const avatar = document.createElement("div");
   avatar.classList.add(".avatar");
 
   const avatarPlaceHolder = document.createElement("div");
-  avatarPlaceHolder.classList.add(".avatar__placeholder");
+  avatarPlaceHolder.classList.add("avatar__placeholder");
   avatar.appendChild(avatarPlaceHolder);
 
-  const avatarImage = document.createElement("img");
-  avatarImage.classList.add(".avatar__image");
-  // avatarImage.src = currentComment.img;
-  // avatarImage.alt = "profile picture";
-  avatar.appendChild(avatarImage);
+  //check if there is an image, if there is create the img tag
+  if (currentComment.img !== undefined) {
+    const avatarImage = document.createElement("img");
+    avatarImage.classList.add("avatar__image");
+    avatarImage.src = currentComment.img;
+    avatarImage.alt = "profile picture";
+    avatarPlaceHolder.appendChild(avatarImage);
+    console.log(avatarImage.src);
+  }
 
   return avatar;
 }
 
-
-// // You must use an HTML Form with the following functionality:
 
 
 
@@ -180,25 +151,56 @@ function createAvatar(currentComment) {
 
 // --- FORM HANDLING --- //
 
+//select the form 
 const formEl = document.querySelector(".comments__form");
 
+//start listening for submit event on the form
+//when the form get submitted do the following:
+
 formEl.addEventListener("submit", function (e) {
-  //prevent the page from reloading (which is a default action of submit) when submitting the form
+
+  //prevent the page from reloading (which is a default of submit) when submitting the form
   e.preventDefault();
 
   //create new comment object
+  // let avatar = document.querySelector(".avatar__placeholder");
   const newComment = {
     name: e.target.name.value,
     message: e.target.comment.value,
-    dateTimestamp: "2021/09/09",
-    img: ""
+    // https://stackoverflow.com/questions/2035699/how-to-convert-a-full-date-to-a-short-date-in-javascript
+
+    //TODO figure out how to get the timestamp but display the localethingy
+    dateTimestamp: (new Date()),
+    // .toLocaleDateString('en-US'),
+
+
+    //TODO: be able to upload an image and don t hardcode this image in...
+    img: "./assets/images/Mohan-muruge.jpg"
   }
+
   //push new comment to the comments array
   comments.push(newComment);
 
   // clear all the comments from the comment container
   clearComments(commentsContainer);
-  //TODO sort commment so newest comes first.
+
+
+  //sort commment so newest comes first.
+
+
+  // https://www.javascripttutorial.net/array/javascript-sort-an-array-of-objects/
+  comments.sort((a, b) => {
+
+    let da = new Date(a.dateTimestamp), //convert back to date format
+      db = new Date(b.dateTimestamp);
+
+    return db - da;
+
+
+    // return new Date(b.dateTimestamp) - new Date(a.dateTimestamp);
+  });
+
+  console.log(comments);
 
 
   //re-render all the comments
@@ -207,16 +209,22 @@ formEl.addEventListener("submit", function (e) {
   //reset (clear) the input fields when submitting 
   e.target.reset();
 
-
-
-  // TODO
-  // // Pushes a new comment object to an array of comments
-  // // Clears all comments from the page
-  // // Re-renders to the page all comments from the comment array
-
-
 });
-// console.log("currentcomment:" + currentComment);
+
+
+// clear all the comments from the comment container
+function clearComments(commentsContainer) {
+  //delete children
+  //while the commentscontainer has a child, remove the child
+  //  https://www.javascripttutorial.net/dom/manipulating/remove-all-child-nodes/
+
+  while (commentsContainer.firstChild) {
+    commentsContainer.removeChild(commentsContainer.firstChild);
+  }
+}
+
+
+// //give active class to current formfield
 
 
 
@@ -245,3 +253,73 @@ formEl.addEventListener("submit", function (e) {
 
 
 // https://articlearn.id/article/d1a6b5cc-how-to-format-time-since-or-time-ago-in-j/
+
+
+
+// // function displayComment (comment){
+//    // Constructs a new comment object
+//   // a name comment date img
+// const commentsOld = document.querySelector(".comments__old");
+
+// forEach()
+
+
+
+// let today = Date.now();
+// console.log(today);
+
+// let today = newDate();
+// today.toLocaleDateString('en-US');
+
+
+
+// let today = (new Date()).toLocaleDateString('en-US');
+
+// console.log(today);
+
+
+//   employees.sort((a, b) => {
+//     let da = new Date(a.joinedDate),
+//         db = new Date(b.joinedDate);
+//     return da - db;
+// });
+
+// comments.sort(a, b){
+//   let da = a.dateTimestamp;
+//   let db = b.dateTimestamp;
+
+//   return da - db;
+// }
+
+// employees.forEach((e) => {
+//   console.log(`${e.firstName} ${e.lastName} ${e.joinedDate}`);
+// });
+
+// comments.forEach((e) => {
+//   comments.sort(a, b) => {
+//     let da = a.dateTimestamp;
+//     let db = b.dateTimestamp;
+
+//     return da - db;
+//   }
+// })
+
+
+// const items = [
+//   { name: 'Edward', value: 21 },
+//   { name: 'Sharpe', value: 37 },
+//   { name: 'And', value: 45 },
+//   { name: 'The', value: -12 },
+//   { name: 'Magnetic', value: 13 },
+//   { name: 'Zeros', value: 37 }
+// ];
+
+// console.log(items);
+// // sort by value
+// items.sort(function (a, b) {
+//   return b.value - a.value;
+// });
+
+// console.log(items);
+
+

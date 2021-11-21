@@ -168,7 +168,7 @@
 
 /// - COMMENTS SECTION
 
-.comments {
+.comment {
   @include padding-sections;
 
   &__header {
@@ -185,6 +185,15 @@
   // }
 &__name{
   @include copy;
+  font-weight: 700;
+}
+&__date{
+  @include copy;
+  color: $silver;
+}
+&__comment{
+  @include copy;
+  // font-weight: 600;
 }
   // &__new {
   //   // display: flex;
