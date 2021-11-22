@@ -48,13 +48,11 @@ const showsList = [
 
 // !!! DATE VENUE LOCATION repeated for each show in mobile and only in columns for tablet and desktop
 //if min width is 768 don't include then for each, but render them on top of the page
+const showSectionContainer = document.createElement("div");
 
-
-
+function createShowSection(){
 //select shows-section in html
 const showsSection = document.querySelector(".shows");
-
-// for each show in the array run the createshows function and append the showArticle of the current show to the showsSection
 
 //create shows section heading
 const showsHeader = document.createElement('h2');
@@ -62,22 +60,43 @@ showsHeader.classList.add("shows__header");
 showsHeader.innerText = "Shows";
 showsSection.appendChild(showsHeader);
 
+//create shows titles to show on tablet and desktop
+const titlesContainer = document.createElement("div");
+showsSection.appendChild(titlesContainer);
 
-///in a function? or available globally? or
-/// definitely re write to for each ()
-// for (let i = 0; i < showsList.length; i++) {
-//   let currentShow = showsList[i];
+//TODO work in progress....
+// const infoWrapper =document.createElement("show__title-wrapper");
+// showSectionContainer.appendChild(infoWrapper);
+// //creat titles for min width(=768)
+// function createTitlesForBigScreen(title){
+//   const infoTitle = document.createElement("h3")
+//   infoTitle.classList.add("show__info-title");
+//   infoTitle.innerText = title;
+//   infoWrapper.appendChild(infoTitle);
+// };
+// createTitlesForBigScreen("DATE");
+// createTitlesForBigScreen("VENUE");
+// createTitlesForBigScreen("LOCATION");
 
-//   let showArticle = createShows(currentShow);
+//create showContainer for flexbox
+// const showSectionContainer =document.createElement("div");
+showSectionContainer.classList.add("show__container");
+showsSection.appendChild(showSectionContainer);
 
-//   showsSection.appendChild(showArticle);
-// }
+}
 
+
+createShowSection();
+
+
+
+
+// for each show in the array run the createshows function and append the showArticle of the current show to the showSectionContainer
 showsList.forEach(currentShow => {
 
   let showArticle = createShows(currentShow);
 
-  showsSection.appendChild(showArticle);
+  showSectionContainer.appendChild(showArticle);
 });
 
 //createShows function
@@ -86,7 +105,7 @@ function createShows(currentShow) {
   //create show article wrapper
   const showArticle = document.createElement("article");
   showArticle.classList.add("show");
-  showsSection.appendChild(showArticle);
+  showSectionContainer.appendChild(showArticle);
 
   // // create date 
   const dateContainer = createDate("DATE", currentShow.date);
@@ -145,31 +164,32 @@ function createDate(title, value){
   return infoDateContainer;
 }
 
-function createBuyButton(){
+// function createBuyButton(){
 
-}
+// }
 
 
 //give active class to clicked show
 
 //https://stackoverflow.com/questions/45112279/add-a-class-to-target-and-remove-class-from-other-elements-with-the-same-class-n
-  const clickedShow = document.getElementsByClassName("show");
+  const clickedShow = document.querySelectorAll(".show");
   // console.log(typeof clickedShow);
 
-  //TODO when brain is back: rewrite in hof, but it s an object...
-  for (let i = 0; i < clickedShow.length; i++) {
-    clickedShow[i].addEventListener("click", changeActiveStatus);
-  }
+  clickedShow.forEach(show => {
+    show.addEventListener("click", changeActiveStatus);
+  });
+
+
 
   function changeActiveStatus(e) {
-    const oldActive = document.getElementsByClassName("active");
-    console.log(typeof oldActive);
+    const oldActive = document.querySelectorAll(".show--active");
+    // console.log(typeof oldActive);
 
-      //TODO when brain is back: rewrite in hof, but it s an object...
-    for (let i = 0; i < oldActive.length; i++) {
-      oldActive[i].classList.remove("active");
-    }
-    e.currentTarget.classList.add("active");
+    oldActive.forEach(show => {
+      show.classList.remove("show--active");
+    });
+
+    e.currentTarget.classList.add("show--active");
   }
 
 

@@ -102,3 +102,11 @@
     padding-bottom: 1rem;
   }
 }
+
+//small title
+@mixin small-title {
+  color: $silver;
+  font-size: 0.7rem;
+  font-weight: 600;
+  // margin: 8px 0;
+}

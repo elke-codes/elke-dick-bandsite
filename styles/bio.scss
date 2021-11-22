@@ -167,8 +167,15 @@
 }
 
 /// - COMMENTS SECTION
-
-.comment {
+input {
+  background-color: $alabaster;
+}
+//comments section
+.avatar-form {
+  padding-top: 1.5rem;
+}
+.comments {
+  width: 100%;
   @include padding-sections;
 
   &__header {
@@ -179,48 +186,67 @@
       // width: 100%;
     }
   }
-
-  // &__info{
-  //  @include copy;
+  // &__article {
+  //   display: flex;
+  //   justify-content: space-between;
   // }
-&__name{
-  @include copy;
-  font-weight: 700;
-}
-&__date{
-  @include copy;
-  color: $silver;
-}
-&__comment{
-  @include copy;
-  // font-weight: 600;
-}
+  &__form {
+    // padding-left: 16px;
+    display: flex;
+    @include tablet {
+      margin: 0rem 4rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #e1e1e1;
+    }
+    @include desktop {
+      margin: 0rem 16rem;
+    }
+  }
+  &__field-container {
+    width: 100%;
+    padding: 0 1rem;
+    @include tablet {
+      display: flex;
+      flex-direction: column;
+    }
+  }
   // &__new {
   //   // display: flex;
   // }
-  // &__form {
-  //   // padding-left: 16px;
-  // }
 
+  &__form-name {
+    @include small-title;
+    padding: 0 0 1rem 0;
+  }
   // &__form-identity {
   //   // padding-bottom: 16px;
   // }
 
-  // &__form-comment {
-  //   // display: flex;
-  //   // flex-direction: column;
-  //   // margin-left: 2rem;
-  // }
+  &__form-comment {
+    color: $silver;
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin: 8px 0;
+  }
 
   &__form-field {
     min-height: 2.25rem;
     width: 100%;
     border-radius: 0.25rem;
     padding: 0.75rem;
-    margin: 4px;
-    border: 1px solid $mercury; // default state
-    // border: 1px solid $bandsite-black; // active state
-    // border: 1px solid #d22d2d; // error state
+    margin: 0.5rem 0;
+    border: 1px solid $mercury;
+    color: black;
+    // default state border: 1px solid $mercury
+    // active state $bandsite-black;
+    //error state #d22d2d;
+    &--active {
+      border-color: $bandsite-black;
+    }
+    //overwriting this default setting that seems to be applied on the "ouline"
+    &:focus-visible {
+      outline-color: $bandsite-black;
+    }
     @include tablet {
       min-height: 3rem;
       padding: 1rem;
@@ -228,29 +254,79 @@
   }
 }
 
-//avatar likely used somewhere else too, so it's own class
-.avatar {
-  &__placeholder {
-    // height of the input form name
-    height: 2.25rem;
-    width: 2.25rem;
-    object-fit: cover;
-    object-position: 30%;
-    background-color: $mercury;
-    // rounded corners:
-    border-radius: 50%;
-    @include tablet {
-      height: 3rem;
-      width: 3rem;
-    }
-  }
-
-  &__image {
-    @extend .avatar__placeholder;
+#comment {
+  height: 4rem;
+  @include tablet {
+    height: 5rem;
   }
 }
 
-// #name {
-//   height: 2rem;
-//   border-radius: 5%;
-// }
+//avatar likely used somewhere else too, so it's own class
+.avatar {
+  object-position: 30%;
+  height: 2.25rem;
+  width: 2.25rem;
+  object-fit: cover;
+  object-position: 30%;
+  border-radius: 50%;
+
+  @include tablet {
+    height: 3rem;
+    width: 3rem;
+  }
+  &__placeholder {
+    background-color: $mercury;
+    @extend .avatar;
+  }
+
+  &__image {
+    @extend .avatar;
+  }
+}
+
+.comment {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid #e1e1e1;
+
+  @include tablet {
+    padding: 2rem 0;
+  }
+
+  &__container {
+    margin: 1rem 0;
+    @include tablet {
+      padding: 0 4rem;
+      margin: 3rem 0;
+    }
+    @include desktop {
+      padding: 0 16rem;
+    }
+  }
+
+  &__info {
+    padding: 0 1rem;
+    width: 100%;
+  }
+  &__info-container {
+    @include copy;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 8px;
+  }
+
+  &__name {
+    @include copy;
+    font-weight: 600;
+  }
+  &__date {
+    @include copy;
+    color: $silver;
+  }
+  &__comment {
+    @include copy;
+    // font-weight: 600;
+    width: 100%;
+  }
+}

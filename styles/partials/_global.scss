@@ -118,12 +118,12 @@ a {
   border-color: $bandsite-black;
   font-weight: 700;
   font-size: 1rem;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
   @include tablet {
     min-width: 9.375rem;
     width: fit-content;
     padding: 0 2rem;
-    margin-bottom: 0;
+    align-self: flex-end;
   }
 
   &:hover {

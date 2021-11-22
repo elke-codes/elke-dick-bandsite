@@ -161,19 +161,16 @@
         />
       </section>
 
-
-    <!-- COMMENTS SECTION -->
-    <section class="comments">
-      <!-- comments section header -->
-      <h2 class="comments__header">Join the Conversation</h2>
-      <div class="comments__new"></div>
-
-
-        <!-- comments form -->
-        <form class="comments__form">
-          <div class="comments__form-identity">
-                    <!-- avatar -->
-            <div class="avatar">
+      <!-- COMMENTS SECTION -->
+      <section class="comments">
+        <!-- comments section header -->
+        <h2 class="comments__header">Join the Conversation</h2>
+        <!-- <div class="comments__new"> -->
+          <!-- comments form -->
+          <form class="comments__form">
+            <!-- <div class="comments__form-identity"> -->
+            <!-- avatar -->
+            <div class="avatar avatar-form">
               <div class="avatar__placeholder">
                 <img
                   src="./assets/images/Mohan-muruge.jpg"
@@ -182,38 +179,42 @@
                 />
               </div>
             </div>
-            <div class="comments__form-name">
-              <!-- name label -->
-              <label for="name">Name</label>
-              <!-- name input -->
-              <input
-                type="text"
-                name="name"
-                id="name"
-                placeholder="Enter your name"
-                class="comments__form-field"
-              />
-            </div>
-          </div>
-          <div class="comments__form-comment">
-            <!-- comment label -->
-            <label for="comment">Comment</label>
-            <!-- comment input -->
-            <input
-              type="text"
-              name="comment"
-              placeholder="Add a new comment"
-              id="comment"
-              class="comments__form-field"
-            />
-          </div>
-          <button type="submit" class="button">COMMENT</button>
-        </form>
-      </div>
+            <div class="comments__field-container">
+              <div class="comments__form-name">
+                <!-- name label -->
+                <label for="name">NAME</label>
+                <!-- name input -->
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="Enter your name"
+                  class="comments__form-field"
+                />
+              </div>
+              <!-- </div> -->
+              <div class="comments__form-comment">
+                <!-- comment label -->
+                <label for="comment">COMMENT</label>
+                <!-- comment input -->
+                <input
+                  type="text"
+                  name="comment"
+                  placeholder="Add a new comment"
+                  id="comment"
+                  class="comments__form-field"
+                />
+              </div>
 
-      <!-- for visualisation only, create with dom manipulation -->
-      <div class="comments__container">
-        <!-- <article class="comment">
+              <button type="submit" class="button">COMMENT</button>
+            </div>
+          </form>
+        <!-- </div> -->
+        </div>
+
+        <!-- for visualisation only, create with dom manipulation -->
+        <div class="comment__container">
+          <!-- <article class="comment">
           <div class="avatar">
             <div class="avatar__placeholder">
               <img
@@ -234,9 +235,9 @@
           </p>
         </div>
         </article> -->
-      </div>
-    </section>
-  </main>
+        </div>
+      </section>
+    </main>
     <!-- FOOTER -->
     <footer class="footer">
       <div class="footer__top">
@@ -376,6 +377,5 @@
     <!-- SCRIPTS -->
     <script src="./scripts/index-page.js"></script>
     <!-- <script src="./scripts/build-shows-page.js"></script> -->
-
   </body>
 </html>
