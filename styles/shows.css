@@ -24,7 +24,7 @@
 
 body {
   margin: 0;
-  font-family: "AvenirNext LT Pro";
+  font-family: "AvenirNext LT Pro", Arial, sans-serif;
   color: #323232;
 }
 
@@ -38,6 +38,10 @@ p {
 
 a {
   text-decoration: none;
+}
+
+address {
+  font-style: normal;
 }
 
 .logo {

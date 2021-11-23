@@ -144,6 +144,8 @@ formEl.addEventListener("submit", function (e) {
   //prevent the page from reloading (which is a default of submit)
   e.preventDefault();
 
+  console.log(e);
+
   //create new comment object
   const newComment = {
     name: e.target.name.value,

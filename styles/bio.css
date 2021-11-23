@@ -24,7 +24,7 @@
 
 body {
   margin: 0;
-  font-family: "AvenirNext LT Pro";
+  font-family: "AvenirNext LT Pro", Arial, sans-serif;
   color: #323232;
 }
 
@@ -38,6 +38,10 @@ p {
 
 a {
   text-decoration: none;
+}
+
+address {
+  font-style: normal;
 }
 
 .logo {
@@ -458,11 +462,17 @@ a {
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.5rem;
+  margin: 0;
 }
 @media screen and (min-width: 768px) {
   .about__quote {
     font-size: 1.375rem;
     line-height: 2rem;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .about__quote {
+    width: 80%;
   }
 }
 @media screen and (min-width: 768px) {

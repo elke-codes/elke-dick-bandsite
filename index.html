@@ -26,7 +26,7 @@
     <header class="header">
       <!-- header logo -->
       <div class="logo header__logo">
-        <a href="index.html" class="logo__link"
+        <a href="/" class="logo__link"
           ><img
             src="./assets/logo/Logo-bandsite.svg"
             alt="bandsite logo with the word BANDSITE in white on black background"
@@ -35,12 +35,13 @@
       </div>
       <!-- header navigation -->
       <nav class="header__nav">
-        <a href="index.html" class="header__nav-link header__nav-link--active">
+        <!-- by default, browser will look for index.html in root folder with href"/" -->
+        <a href="/" class="header__nav-link header__nav-link--active">
           Biography
         </a>
         <a
           href="./pages/shows.html"
-          class="header__nav-link header__nav-link--inactive"
+          class="header__nav-link "
         >
           Shows
         </a>
@@ -63,20 +64,25 @@
         <!-- about content container -->
         <div class="about__content">
           <!-- about section image -->
-          <img src="/assets/images/band.jpg" alt="" class="about__image" />
+          <img src="/assets/images/band.jpg" alt="view of crowd and band on stage" class="about__image" />
           <!-- about section quote -->
           <div class="about__quote-container">
-            <q
+            <!-- is this too much? can you just use the blockquote on it s own with a p tag for the name? -->
+            <!-- <figure> -->
+            <blockquote
               class="about__quote"
               cite="http://www.brainstation.io/fake-link-to-bees-knees"
             >
-              We push each other to be the best. It’s not uncommon for one of us
-              to say ‘this needs to be better, back to the drawing board’
-            </q>
-            <br />
-            <p class="about__quote about__quote-reference">
-              - Bryan Teddy, lead vocalist of The Bees Knees
-            </p>
+              "We push each other to be the best. It’s not uncommon for one of us
+              to say ‘this needs to be better, back to the drawing board’"
+            </blockquote>
+            <figcaption class="about__quote about__quote-reference">
+              <!-- <cite> -->
+                - Bryan Teddy
+              <!-- </cite> -->
+              , lead vocalist of The Bees Knees
+            </figcaption>
+          <!-- </figure> -->
           </div>
           <!-- about section subheader -->
           <h3 class="about__subheader">The Bees Knees</h3>
@@ -247,19 +253,19 @@
           <!-- footer social block -->
           <div class="footer__social">
             <!-- footer icon x3 -->
-            <a href="http://www.instagram.com" class="footer__link">
+            <a href="http://www.instagram.com" target="_blank" class="footer__link">
               <img
                 src="/assets/icons/SVG/Icon-instagram.svg"
                 alt="instagram logo"
                 class="footer__icon"
             /></a>
-            <a href="http://www.facebook.com" class="footer__link">
+            <a href="http://www.facebook.com" target="_blank" class="footer__link">
               <img
                 src="/assets/icons/SVG/Icon-facebook.svg"
                 alt="facebook logo"
                 class="footer__icon"
             /></a>
-            <a href="http://www.twitter.com" class="footer__link">
+            <a href="http://www.twitter.com" target="_blank" class="footer__link">
               <img
                 src="/assets/icons/SVG/Icon-twitter.svg"
                 alt=""
@@ -270,10 +276,10 @@
 
         <!-- footer logo -->
         <div class="logo footer__logo-top">
-          <a href="index.html" class="footer__link"
+          <a href="/" class="footer__link"
             ><img
               src="./assets/logo/Logo-bandsite.svg"
-              alt=""
+              alt="bandsite logo with the word BANDSITE in white on black background"
               class="logo__image"
           /></a>
         </div>
@@ -288,10 +294,10 @@
             Cam Adams <br />The Bees Knees Management
           </p>
           <!-- footer address 2 lines -->
-          <p class="footer__copy">
+          <address class="footer__copy">
             503 Broadway Penthouse, <br />
             New York, NY 10012, USA
-          </p>
+          </address>
           <!-- footer email - opens email program -->
           <p class="footer__copy">
             <a
@@ -355,10 +361,10 @@
 
       <!-- footer logo -->
       <div class="logo footer__logo">
-        <a href="index.html" class="footer__link"
+        <a href="/" class="footer__link"
           ><img
             src="./assets/logo/Logo-bandsite.svg"
-            alt=""
+            alt="bandsite logo with the word BANDSITE in white on black background"
             class="logo__image"
         /></a>
       </div>
