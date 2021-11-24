@@ -1,5 +1,7 @@
 // TODO
 
+
+
 // Users must be able to add new comments that are stored on the back-end using the API.
 // New comments that are added must be displayed with the existing comments, the newest comments being at the top.
 // The Bio Page must not reload when comments are added.
@@ -37,21 +39,12 @@
 
    const storedComments = resolve.data
 
-
-   console.log("comments before loop", comments);
-  //  for (let i=0; i<storedComments.length; i++){
-  //    comments.push(storedComments[i]);
-  //  }
    storedComments.forEach(comment =>{
      comments.push(comment);
-     console.log(comments);
-   })
 
+   })
    //wait untill you get the comments back from the API, THEN, if that worked out, run the rest of the code
   displayComment(comments);
-
-  console.log("comments after loop", comments);
- 
    
  })
  .catch(error => console.log("there was a problem with this get request" + error));
@@ -59,8 +52,6 @@
  
  
  getComments();
-
- console.log(comments[0]);
 
 
 /// --   COMMENTS SECTION
@@ -171,41 +162,50 @@ const formEl = document.querySelector(".comments__form");
 
 //start listening for submit event on the form
 formEl.addEventListener("submit", function (e) {
+  console.log("e: ", e);
   //when the form gets submitted do the following:
   //prevent the page from reloading (which is a default of submit)
   e.preventDefault();
 
-  console.log(e);
+  // console.log(e);
 
   //create new comment object
   const newComment = {
     name: e.target.name.value,
-    message: e.target.comment.value,
-    //make sure all dateTimestamps are of the same type!
-    dateTimestamp: new Date(Date.now()),
+    comment: e.target.comment.value,
+    // //make sure all dateTimestamps are of the same type!
+    // timestamp: new Date(Date.now()),
     //TODO: be able to upload an image and don t hardcode this image in...
-    img: "./assets/images/Mohan-muruge.jpg"
+    // img: "./assets/images/Mohan-muruge.jpg"
   }
+
+
+ // Users must be able to add new comments that are stored on the back-end using the API.
+// New comments that are added must be displayed with the existing comments, the newest comments being at the top.
+// The Bio Page must not reload when comments are added.
+// New comments are not required to have a provided avatar image, but can use a placeholder.
+
+function postComment(newComment){
+
+  axios.post(`${BANSITE_API_URL}/comments?&api_key=${BANDSITE_API_KEY}`, newComment)
+  .then(resolve => {
+    console.log("resolve1", resolve.data);
 
   //push new comment to the comments array
   comments.push(newComment);
-
   // clear all the comments from the comment container
   clearComments(commentsContainer);
-
-
   //sort commment so newest comes first.
     // https://www.javascripttutorial.net/array/javascript-sort-an-array-of-objects/
-  comments.sort((a, b) => {
-    return b.dateTimestamp - a.dateTimestamp;
-  });
 
+    console.log("timestamp:", e.timeStamp);
+  comments.sort((a, b) => {
+    return b.e.timeStamp - a.e.timeStamp;
+  });
   //re-render all the comments
   displayComment(comments);
-
   //reset (clear) the input fields when submitting 
   e.target.reset();
-
   //remove active class from input fields after submitting form
   function removeFormFieldActiveClass(){
   const activeFormField = document.querySelector(".comments__form-field--active");
@@ -215,6 +215,14 @@ formEl.addEventListener("submit", function (e) {
   }
 }
 removeFormFieldActiveClass();
+
+  })
+  .catch(error => console.log("there was a problem with this post request" + error));
+
+
+}
+
+  postComment(newComment);
 
 });
 
@@ -261,6 +269,12 @@ field.classList.remove("comments__form-field--active");
 }
 }
 addFormFieldActiveClass();
+
+
+
+
+
+
 
 
 // Download page content first, along with any CSS or JavaScript that may be required for its initial display, so that the user gets the quickest apparent response during the page loading. This content is typically text, and can, therefore, benefit from text compression in transit, thus providing an even quicker response to the user.
