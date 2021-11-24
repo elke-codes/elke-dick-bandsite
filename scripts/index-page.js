@@ -1,38 +1,66 @@
+// TODO
 
-// // create comments array, with objects for each comment
-// //comments must have:
-// - a name - a timestamp - the comment text
+// Users must be able to add new comments that are stored on the back-end using the API.
+// New comments that are added must be displayed with the existing comments, the newest comments being at the top.
+// The Bio Page must not reload when comments are added.
+// New comments are not required to have a provided avatar image, but can use a placeholder.
+
 
 
 //TODO add to possibility to add an image
 // const avatar = document.querySelector(".avatar");
-const comments = [
-  {
-
-    name: "Connor Walton",
-    message: `This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains.`,
-    dateTimestamp: new Date("02/17/2021")
-    ,
-    img: "https://picsum.photos/36"
-  },
-  {
-    name: "Emilie Beach",
-    message: `I feel blessed to have seen them in person. What a show! They were just perfection. If there was one day of my life I could relive, this would be it. What an incredible day.`,
-    dateTimestamp: new Date("01/09/2021")
-
-
-  },
-  {
-    name: "Miles Acosta",
-    message: `I can t stop listening. Every time I hear one of their songs the vocals it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can t get enough.`,
-    dateTimestamp: new Date("12/20/2020")
-    ,
-
-    img: "https://i.pravatar.cc/36"
-  }
-]
-
 // https://stackoverflow.com/questions/3177836/how-to-format-time-since-xxx-e-g-4-minutes-ago-similar-to-stack-exchange-site
+
+
+
+ // {
+
+  //   name: "Connor Walton",
+  //   message: `This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains.`,
+  //   dateTimestamp: new Date("02/17/2021")
+  //   ,
+  //   img: "https://picsum.photos/36"
+  // },
+
+// empty comments array
+  const comments = [];
+  // get API key at https://project-1-api.herokuapp.com/register 
+  // or "message": "api_key query parameter required. You may use any string (including you name) as your api_key."
+  const BANSITE_API_URL = "https://project-1-api.herokuapp.com";
+  const BANDSITE_API_KEY = "1d72f654-70d6-488d-8961-2583a70e24bc";
+ 
+ // The Bio Page must retrieve comment data from the provided API and display it on the page.
+ 
+ function getComments(){
+ axios.get(`${BANSITE_API_URL}/comments?&api_key=${BANDSITE_API_KEY}`)
+ .then((resolve) =>{
+
+   const storedComments = resolve.data
+
+
+   console.log("comments before loop", comments);
+  //  for (let i=0; i<storedComments.length; i++){
+  //    comments.push(storedComments[i]);
+  //  }
+   storedComments.forEach(comment =>{
+     comments.push(comment);
+     console.log(comments);
+   })
+
+   //wait untill you get the comments back from the API, THEN, if that worked out, run the rest of the code
+  displayComment(comments);
+
+  console.log("comments after loop", comments);
+ 
+   
+ })
+ .catch(error => console.log("there was a problem with this get request" + error));
+ }
+ 
+ 
+ getComments();
+
+ console.log(comments[0]);
 
 
 /// --   COMMENTS SECTION
@@ -55,7 +83,6 @@ function displayComment(comment) {
 
 // //render the comments when the page first loads
 // // and again when a new comment is added through the form
-displayComment(comments);
 
 
 //create comment 
@@ -93,15 +120,19 @@ function createComment(currentComment) {
   commentName.innerText = currentComment.name;
   commentInfoContainer.appendChild(commentName);
 
+  // convert timestamp into workable format
+  const timestamp = new Date(currentComment.timestamp)
+
   const commentsDate = document.createElement("p");
   commentsDate.classList.add("comment__date");
-  commentsDate.innerText = currentComment.dateTimestamp.toLocaleDateString('en-US');
+  commentsDate.innerText = timestamp.toLocaleDateString('en-US');
+
   commentInfoContainer.appendChild(commentsDate);
 
 
   const comment = document.createElement("p");
   comment.classList.add("comment__comment");
-  comment.innerText = currentComment.message;
+  comment.innerText = currentComment.comment;
   commentInfo.appendChild(comment);
 
   return commentInfo;
@@ -203,11 +234,15 @@ function clearComments(commentsContainer) {
   //https://stackoverflow.com/questions/45112279/add-a-class-to-target-and-remove-class-from-other-elements-with-the-same-class-n
 function addFormFieldActiveClass(){
   //find all formfields
+  // TODO uncomment this lol
 const formFields = document.getElementsByClassName("comments__form-field");
 //go through all the formfield elements and add an on click event listener to them
-formFields.forEach((field) =>{
-  field.addEventListener("click", changeActiveStatus);
-})
+for (let i= 0; i<formFields.length; i++){
+  formFields[i].addEventListener("click", changeActiveStatus);
+}
+// formFields.forEach((field) =>{
+//   field.addEventListener("click", changeActiveStatus);
+// })
 
 //function to add the active class when formfield is clicked
 function changeActiveStatus(e) {
@@ -231,7 +266,7 @@ addFormFieldActiveClass();
 // Download page content first, along with any CSS or JavaScript that may be required for its initial display, so that the user gets the quickest apparent response during the page loading. This content is typically text, and can, therefore, benefit from text compression in transit, thus providing an even quicker response to the user.
 //Any dynamic features that require the page to complete loading before being used, should be initially disabled, and then only enabled after the page has loaded. This will cause the JavaScript to be loaded after the page contents, which will improve the overall appearance of the page load.
 
-
+// TODO
 // ///-- DIVING DEEPER
 
 // // Dynamic Timestamp
@@ -253,5 +288,4 @@ addFormFieldActiveClass();
 
 
 // https://articlearn.id/article/d1a6b5cc-how-to-format-time-since-or-time-ago-in-j/
-
 

@@ -192,4 +192,5 @@ function createDate(title, value){
     e.currentTarget.classList.add("show--active");
   }
 
-
+//TODO
+// The Shows Page must display the shows data retrieved from the API.
