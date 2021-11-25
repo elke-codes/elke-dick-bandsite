@@ -247,6 +247,14 @@ input {
     &--active {
       border-color: $bandsite-black;
     }
+
+    &--error {
+      // background-color: #d22d2d;
+      border-color: #d22d2d;
+    }
+    &--error-message {
+      color: #d22d2d;
+    }
     //overwriting this default setting that seems to be applied on the "ouline"
     &:focus-visible {
       outline-color: $bandsite-black;

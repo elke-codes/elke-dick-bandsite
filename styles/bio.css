@@ -711,6 +711,12 @@ input {
 .comments__form-field--active {
   border-color: #323232;
 }
+.comments__form-field--error {
+  border-color: #d22d2d;
+}
+.comments__form-field--error-message {
+  color: #d22d2d;
+}
 .comments__form-field:focus-visible {
   outline-color: #323232;
 }
