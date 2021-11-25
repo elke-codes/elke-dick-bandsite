@@ -12,39 +12,63 @@
 // You must have an array in JavaScript with all of concerts data and render the concerts HTML dynamically using the array data. It’s up to your discretion to decide on properties you create to represent all of the individual concert data.
 // https://www.freecodecamp.org/news/how-to-format-dates-in-javascript/
 // https://css-tricks.com/working-with-javascript-media-queries/
-const showsList = [
-  {
-    date: new Date("Mon Sept 06 2021").toDateString(),
-    venue: "Ronald Lane",
-    location: "San Francisco, CA",
-  },
 
-  {
-    date: new Date("Tue Sept 21 2021").toDateString(),
-    venue: "Pier 3 East",
-    location: "San Francisco, CA",
-  },
-  {
-    date: new Date("Fri Oct 15 2021").toDateString(),
-    venue: "View Lounge",
-    location: "San Francisco, CA",
-  },
-  {
-    date: new Date("Sat Nov 06 2021").toDateString(),
-    venue: "Hyatt Agency",
-    location: "San Francisco, CA",
-  },
-  {
-    date: new Date("Fri Nov 26 2021").toDateString(),
-    venue: "Moscow Center",
-    location: "San Francisco, CA",
-  },
-  {
-    date: new Date("Wed Dec 15 2021").toDateString(),
-    venue: "Press Club",
-    location: "San Francisco, CA",
-  },
-];
+
+
+// The Shows Page must display the shows data retrieved from the API.
+const BANDSITE_API_URL = "https://project-1-api.herokuapp.com";
+const BANDSITE_API_KEY = "1d72f654-70d6-488d-8961-2583a70e24bc";
+
+const showsFromApi = 
+  axios.get(`${BANDSITE_API_URL}/showdates?api_key=${BANDSITE_API_KEY}`)
+  .then(resolve =>{
+
+    displayShows(resolve);
+  }
+  )
+  .then(resolve =>{
+
+    //give active class to clicked show
+
+    //https://stackoverflow.com/questions/45112279/add-a-class-to-target-and-remove-class-from-other-elements-with-the-same-class-n
+    const clickedShow = document.querySelectorAll(".show");
+
+    clickedShow.forEach(show => {
+        show.addEventListener("click", changeActiveStatus);
+        
+    });
+
+  }
+  )
+  .catch(error =>{
+    console.log(error)
+  })
+
+
+// for each show in the array run the createshows function and append the showArticle of the current show to the showSectionContainer
+function displayShows(resolve){
+    resolve.data.forEach(currentShow => {
+  
+    let showArticle = createShows(currentShow);
+  
+    showSectionContainer.appendChild(showArticle);
+  });
+  }
+
+
+function changeActiveStatus(e) {
+
+    const oldActive = document.querySelectorAll(".show--active");
+
+    oldActive.forEach(show => {
+    show.classList.remove("show--active");
+    });
+
+    e.currentTarget.classList.add("show--active");
+}
+
+
+
 
 // !!! DATE VENUE LOCATION repeated for each show in mobile and only in columns for tablet and desktop
 //if min width is 768 don't include then for each, but render them on top of the page
@@ -91,13 +115,7 @@ createShowSection();
 
 
 
-// for each show in the array run the createshows function and append the showArticle of the current show to the showSectionContainer
-showsList.forEach(currentShow => {
 
-  let showArticle = createShows(currentShow);
-
-  showSectionContainer.appendChild(showArticle);
-});
 
 //createShows function
 function createShows(currentShow) {
@@ -108,11 +126,12 @@ function createShows(currentShow) {
   showSectionContainer.appendChild(showArticle);
 
   // // create date 
-  const dateContainer = createDate("DATE", currentShow.date);
+  const currentShowDate = (currentShow.date)*1;
+  const dateContainer = createDate("DATE", new Date(currentShowDate).toDateString());
   showArticle.appendChild(dateContainer);
 
   // //create venue 
-  const venueContainer = createShowInfo("VENUE", currentShow.venue);
+  const venueContainer = createShowInfo("VENUE", currentShow.place);
   showArticle.appendChild(venueContainer);
   // //create location
   const locationContainer = createShowInfo("LOCATION", currentShow.location);
@@ -168,29 +187,3 @@ function createDate(title, value){
 
 // }
 
-
-//give active class to clicked show
-
-//https://stackoverflow.com/questions/45112279/add-a-class-to-target-and-remove-class-from-other-elements-with-the-same-class-n
-  const clickedShow = document.querySelectorAll(".show");
-  // console.log(typeof clickedShow);
-
-  clickedShow.forEach(show => {
-    show.addEventListener("click", changeActiveStatus);
-  });
-
-
-
-  function changeActiveStatus(e) {
-    const oldActive = document.querySelectorAll(".show--active");
-    // console.log(typeof oldActive);
-
-    oldActive.forEach(show => {
-      show.classList.remove("show--active");
-    });
-
-    e.currentTarget.classList.add("show--active");
-  }
-
-//TODO
-// The Shows Page must display the shows data retrieved from the API.
