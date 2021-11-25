@@ -140,27 +140,27 @@ function clearComments(commentsContainer) {
 }
 
 function addFormFieldEventListener(){
-  //https://stackoverflow.com/questions/45112279/add-a-class-to-target-and-remove-class-from-other-elements-with-the-same-class-n
-  const formFields = document.querySelectorAll(".comments__form-field");
-  formFields.forEach(formField => {
-        formFields.addEventListener("click", changeActiveStatus);
-  });
+    //https://stackoverflow.com/questions/45112279/add-a-class-to-target-and-remove-class-from-other-elements-with-the-same-class-n
+    const formFields = document.querySelectorAll(".comments__form-field");
+    formFields.forEach(formField => {
+          formField.addEventListener("click", changeActiveStatus);
+    });
 }
 
 function changeActiveStatus(e) {
-  const oldActive = document.querySelectorAll(".comments__form-field--active");
-  oldActive.forEach(field => {
-    field.classList.remove("comments__form-field--active");
-  })
-  e.currentTarget.classList.add("comments__form-field--active");
+    const oldActive = document.querySelectorAll(".comments__form-field--active");
+    oldActive.forEach(field => {
+        field.classList.remove("comments__form-field--active");
+    })
+    e.currentTarget.classList.add("comments__form-field--active");
 }
 
 function removeFormFieldActiveClass() {
-  const activeFormField = document.querySelector(".comments__form-field--active");
-    if(activeFormField){
-    activeFormField.classList.remove("comments__form-field--active");
-    }
-  }
+    const activeFormField = document.querySelector(".comments__form-field--active");
+      if(activeFormField){
+      activeFormField.classList.remove("comments__form-field--active");
+      }
+}
 
   
 /// --- CONTROL FLOW ---///

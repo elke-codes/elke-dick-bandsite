@@ -1,18 +1,24 @@
 /// --- GLOBAL VARIABLES --- ///
+const shows = [];
 const BANDSITE_API_URL = "https://project-1-api.herokuapp.com";
 const BANDSITE_API_KEY = "1d72f654-70d6-488d-8961-2583a70e24bc";
 const showSectionContainer = document.createElement("div");
-
 
 /// ---- FUNCTION DECLARATIONS --- ///
 function getShows(){
   axios.get(`${BANDSITE_API_URL}/showdates?api_key=${BANDSITE_API_KEY}`)
   .then(resolve =>{
 
-    createAndRenderShows(resolve);
-    const shows = document.querySelectorAll(".show");
-    shows.forEach(show => {
-        show.addEventListener("click", addActiveStatus); 
+    const storedShows = resolve.data;
+    storedShows.forEach(show =>{
+      shows.push(show);
+    });
+
+    createAndRenderShows(shows);
+
+    const showsOnPage = document.querySelectorAll(".show");
+    showsOnPage.forEach(showOnPage => {
+      showOnPage.addEventListener("click", addActiveStatus); 
     });
   })
   .catch(error =>{
@@ -20,8 +26,8 @@ function getShows(){
   })
 };
 
-function createAndRenderShows(resolve){
-    resolve.data.forEach(show => {
+function createAndRenderShows(shows){
+    shows.forEach(show => {
         let showArticle = createShow(show);
         showSectionContainer.appendChild(showArticle);
   });
