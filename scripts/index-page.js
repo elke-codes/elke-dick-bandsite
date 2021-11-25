@@ -1,4 +1,4 @@
-/// --- GLOBAL VARIABLES ---///
+/// --- GLOBAL VARIABLES --- ///
   const comments = [];
   // get API key at https://project-1-api.herokuapp.com/register 
   const BANSITE_API_URL = "https://project-1-api.herokuapp.com";
@@ -49,7 +49,7 @@ function createComment(comment) {
   commentArticle.appendChild(commentInfo);
 
   return commentArticle;
-}
+};
 
 
 function createCommentInfo(comment) {
