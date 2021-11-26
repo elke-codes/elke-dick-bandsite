@@ -35,19 +35,56 @@ function addActiveStatus(e) {
 };
 
 function createShowSection(){
-    showSectionContainer.classList.add("show__container");
-
     const showsSection = document.querySelector(".shows");
-    showsSection.appendChild(showSectionContainer);
 
     const showsHeader = document.createElement('h2');
     showsHeader.classList.add("shows__header");
     showsHeader.innerText = "Shows";
     showsSection.appendChild(showsHeader);
 
+    showSectionContainer.classList.add("show__container");
+    showsSection.appendChild(showSectionContainer);
+
     const titlesContainer = document.createElement("div");
     showsSection.appendChild(titlesContainer);
 };
+
+/*
+const showSectionContainer = document.createElement("div");
+
+function createShowSection(){
+//select shows-section in html
+const showsSection = document.querySelector(".shows");
+
+//create shows section heading
+const showsHeader = document.createElement('h2');
+showsHeader.classList.add("shows__header");
+showsHeader.innerText = "Shows";
+showsSection.appendChild(showsHeader);
+
+//create shows titles to show on tablet and desktop
+const titlesContainer = document.createElement("div");
+showsSection.appendChild(titlesContainer);
+
+//TODO work in progress....
+// const infoWrapper =document.createElement("show__title-wrapper");
+// showSectionContainer.appendChild(infoWrapper);
+// //creat titles for min width(=768)
+// function createTitlesForBigScreen(title){
+//   const infoTitle = document.createElement("h3")
+//   infoTitle.classList.add("show__info-title");
+//   infoTitle.innerText = title;
+//   infoWrapper.appendChild(infoTitle);
+// };
+// createTitlesForBigScreen("DATE");
+// createTitlesForBigScreen("VENUE");
+// createTitlesForBigScreen("LOCATION");
+
+//create showContainer for flexbox
+// const showSectionContainer =document.createElement("div");
+showSectionContainer.classList.add("show__container");
+showsSection.appendChild(showSectionContainer);
+*/
 
 function createShow(show) {
   const showArticle = document.createElement("article");

@@ -333,7 +333,7 @@ address {
   padding: 0 1rem;
   padding: 3rem 1rem;
   width: 100%;
-  height: 80vw;
+  height: 60%;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -412,6 +412,7 @@ address {
 @media screen and (min-width: 768px) {
   .soundcloud {
     width: 55%;
+    height: 20%;
   }
 }
 @media screen and (min-width: 1280px) {
@@ -436,7 +437,7 @@ address {
   }
 }
 .shows__header {
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
   padding: 0 1rem;
   font-size: 1.5rem;
   line-height: 2rem;
@@ -472,6 +473,11 @@ address {
     align-self: flex-start;
   }
 }
+@media screen and (min-width: 768px) {
+  .shows__header {
+    margin-bottom: 0;
+  }
+}
 @media screen and (min-width: 1280px) {
   .shows__header {
     padding-bottom: 2rem;
@@ -505,8 +511,12 @@ address {
   .show {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
+    padding: 0;
   }
+}
+.show__container {
+  padding: 0 2rem;
 }
 .show__info-container {
   margin: 1rem 0;
@@ -514,6 +524,7 @@ address {
 @media screen and (min-width: 768px) {
   .show__info-container {
     width: 20%;
+    margin: 1.5rem 0;
   }
 }
 .show__info-title {
@@ -521,6 +532,22 @@ address {
   font-size: 0.7rem;
   font-weight: 600;
   margin: 8px 0;
+}
+@media screen and (min-width: 768px) {
+  .show__info-title {
+    display: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  .show:first-child {
+    align-items: center;
+  }
+}
+@media screen and (min-width: 768px) {
+  .show:first-child h3 {
+    display: flex;
+    margin-bottom: 2rem;
+  }
 }
 .show__info-value {
   font-size: 0.8125rem;
@@ -550,17 +577,4 @@ address {
   .show__title-wrapper {
     display: flex;
   }
-}
-
-/* 
- * Select all but the first .red child of .home,
- * and remove the border from the previous rule.
- */
-.show .show__info-title ~ .show__info-title {
-  color: yellow;
-}
-
-/* 
- * Select all but the first .red child of .home,
- * and remove the border from the previous rule.
- *//*# sourceMappingURL=shows.css.map */
+}/*# sourceMappingURL=shows.css.map */
