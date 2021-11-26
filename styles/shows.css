@@ -434,6 +434,7 @@ address {
   .shows {
     display: flex;
     justify-content: space-between;
+    padding: 4rem 7rem;
   }
 }
 .shows__header {
@@ -480,7 +481,7 @@ address {
 }
 @media screen and (min-width: 1280px) {
   .shows__header {
-    padding-bottom: 2rem;
+    padding: 0;
   }
 }
 
@@ -516,7 +517,7 @@ address {
   }
 }
 .show__container {
-  padding: 0 2rem;
+  width: 100%;
 }
 .show__info-container {
   margin: 1rem 0;
@@ -525,6 +526,11 @@ address {
   .show__info-container {
     width: 20%;
     margin: 1.5rem 0;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .show__info-container {
+    width: 100%;
   }
 }
 .show__info-title {
