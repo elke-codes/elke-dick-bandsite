@@ -130,75 +130,73 @@ function formEventHandler(e){
 
 removeFormFieldModClass();
 
-  // function formValidation(e){
-    console.log("e ",e);
-    console.log("e.target: ",e.target);
-    console.log("e.target.name ",e.target.name);
-        const nameInputValue = e.target.name.value;
-        const commentInputValue = e.target.comment.value;
-        const nameInput = e.target.name;
-        const commentInput = e.target.comment;
+formValidation(e, newComment);
+    // console.log("e ",e);
+    // console.log("e.target: ",e.target);
+    // console.log("e.target.name ",e.target.name);
+    //     const nameInputValue = e.target.name.value;
+    //     const commentInputValue = e.target.comment.value;
+    //     const nameInput = e.target.name;
+    //     const commentInput = e.target.comment;
 
-        if (!nameInputValue)
-        {
-          console.log("no name found: ",nameInputValue);
-          nameInput.classList.add("comments__form-field--error");
+    //     if (!nameInputValue)
+    //     {
+    //       console.log("no name found: ",nameInputValue);
+    //       nameInput.classList.add("comments__form-field--error");
           
-        } 
-        if (!commentInputValue){
-          console.log("no comment found:", e.target.comment.value);
-          commentInput.classList.add('comments__form-field--error');
-        } else{
-          postComment(e, newComment);
+    //     } 
+    //     if (!commentInputValue){
+    //       console.log("no comment found:", e.target.comment.value);
+    //       commentInput.classList.add('comments__form-field--error');
+    //     } else{
+          // postComment(e, newComment);
           
         }
-  }
+  // }
 
 
 
 
-  /*
-    // function formValidation(e){
-    console.log("e ",e);
-    console.log("e.target: ",e.target);
-    console.log("e.target.name ",e.target.name);
-        const nameInputValue = e.target.name.value;
-        const commentInputValue = e.target.comment.value;
-        const nameInput = e.target.name;
-        const commentInput = e.target.comment;
-   
+  
+function formValidation(e, newComment){
+
+    const nameInputValue = e.target.name.value;
+    const commentInputValue = e.target.comment.value;
+    const nameInput = e.target.name;
+    const commentInput = e.target.comment;
+
+    // prevent the errormessages from stacking up by removing them when trying to submit the form again
+    const errorMessages = document.querySelectorAll(".comments__form-field--error-message")
+    errorMessages.forEach(errorMessage=>{
+    errorMessage.remove();
+    })
+
+
+    if (!nameInputValue)
+    {
+      nameInput.classList.add("comments__form-field--error");
+      const formName = document.querySelector(".comments__form-name")
+      const nameErrorMessage = document.createElement("p");
+
+      nameErrorMessage.classList.add("comments__form-field--error-message");
+      nameErrorMessage.innerText = "Please enter a name.";
+      formName.appendChild(nameErrorMessage);
+    } 
+    if (!commentInputValue){
+      commentInput.classList.add('comments__form-field--error');
+      const formComment = document.querySelector(".comments__form-comment")
+      const commentErrorMessage = document.createElement("p");
+
        
-
-        if (!nameInputValue)
-        {
-          nameInput.classList.add("comments__form-field--error");
-          // const formName = document.querySelector(".comments__form-name")
-          // const nameErrorMessage = document.createElement("p");
-
-          // nameErrorMessage.classList.add("comments__form-field--error-message");
-          // nameErrorMessage.innerText = "Please enter a name.";
-          // formName.appendChild(nameErrorMessage);
-        } 
-        if (!commentInputValue){
-          commentInput.classList.add('comments__form-field--error');
-          // console.log("e.target.comment: " , e.target.comment)
-          // const formComment = document.querySelector(".comments__form-comment")
-          // const commentErrorMessage = document.createElement("p");
-
-          //   if(commentInput.classList.contains("comments__form-field--error-message")){
-          //     formComment.removeChild(commentErrorMessage);
-          //   }else{
-          //     commentErrorMessage.classList.add("comments__form-field--error-message");
-          //     commentErrorMessage.innerText = "Please let us know what you think.";
-          //     formComment.appendChild(commentErrorMessage);
-          //   }
-        } else{
-          // nameInput.classList.remove("comments__form-field--error");
-          // commentInput.classList.remove('comments__form-field--error');
-          postComment(e, newComment);
-          
+      commentErrorMessage.classList.add("comments__form-field--error-message");
+      commentErrorMessage.innerText = "Please let us know what you think.";
+      formComment.appendChild(commentErrorMessage);
         }
-        */
+        else{
+      postComment(e, newComment);
+        }
+}
+      
 
 function addFormFieldEventListener(){
   //https://stackoverflow.com/questions/45112279/add-a-class-to-target-and-remove-class-from-other-elements-with-the-same-class-n
@@ -209,6 +207,14 @@ function addFormFieldEventListener(){
 }
 
 function changeStatus(e) {
+  const error = document.querySelectorAll(".comments__form-field--error");
+  error.forEach(error => {
+    error.classList.remove("comments__form-field--error");
+})
+
+
+
+
   const oldActive = document.querySelectorAll(".comments__form-field--active");
   oldActive.forEach(field => {
       field.classList.remove("comments__form-field--active");
@@ -312,32 +318,5 @@ footerCopyright.innerText= new Date().getFullYear();
   
 /// --- CONTROL FLOW ---///
 getComments();
-// addFormEventHandler();
 addFormEventListener();
 addFormFieldEventListener();
-
-
-// function addFormFieldEventListener(){
-//   //https://stackoverflow.com/questions/45112279/add-a-class-to-target-and-remove-class-from-other-elements-with-the-same-class-n
-//   const formFields = document.querySelectorAll(".comments__form-field");
-//   formFields.forEach(formField => {
-//         formField.addEventListener("click", changeStatus);
-//   });
-// }
-
-// function changeStatus(e) {
-//   const oldActive = document.querySelectorAll(".comments__form-field--active");
-//   oldActive.forEach(field => {
-//       field.classList.remove("comments__form-field--active");
-//   })
-//   e.currentTarget.classList.add("comments__form-field--active");
-
-// }
-
-
-// function removeFormFieldActiveClass() {
-//   const activeFormField = document.querySelector(".comments__form-field--active");
-//     if(activeFormField){
-//     activeFormField.classList.remove("comments__form-field--active");
-//     }
-// }
