@@ -304,6 +304,11 @@ function timeAgo(dateString) {
 
   return `${yearsDiff} years ago`;
 }
+
+
+const footerCopyright = document.querySelector(".footer__copyright")
+footerCopyright.innerText= new Date().getFullYear();
+
   
 /// --- CONTROL FLOW ---///
 getComments();

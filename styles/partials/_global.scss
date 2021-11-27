@@ -129,8 +129,10 @@ address {
     padding: 0 2rem;
     align-self: flex-end;
   }
-  @include desktop {
-    // width: 500px;
+  &__shows {
+    @include desktop {
+      width: 100%;
+    }
   }
 
   &:hover {

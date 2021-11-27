@@ -158,6 +158,11 @@ address {
     align-self: flex-end;
   }
 }
+@media screen and (min-width: 1280px) {
+  .button__shows {
+    width: 100%;
+  }
+}
 .button:hover {
   background-color: #000000;
   border-color: #000000;

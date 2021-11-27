@@ -103,6 +103,7 @@ function createShow(show) {
 
   const button = document.createElement("button");
   button.classList.add("button");
+  button.classList.add("button__shows");
   button.innerText = "BUY TICKETS";
   showArticle.appendChild(button);
 
@@ -143,6 +144,10 @@ function createDate(title, value){
 
   return infoDateContainer;
 }
+
+
+const footerCopyright = document.querySelector(".footer__copyright")
+footerCopyright.innerText= new Date().getFullYear();
 
 /// --- CONTROL FLOW --- ///
 createShowSection();

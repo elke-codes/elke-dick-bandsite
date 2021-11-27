@@ -158,6 +158,11 @@ address {
     align-self: flex-end;
   }
 }
+@media screen and (min-width: 1280px) {
+  .button__shows {
+    width: 100%;
+  }
+}
 .button:hover {
   background-color: #000000;
   border-color: #000000;
@@ -517,6 +522,7 @@ address {
   }
 }
 .show__container {
+  padding-left: 7rem;
   width: 100%;
 }
 .show__info-container {
@@ -531,6 +537,7 @@ address {
 @media screen and (min-width: 1280px) {
   .show__info-container {
     width: 100%;
+    padding-top: 0;
   }
 }
 .show__info-title {
@@ -542,11 +549,6 @@ address {
 @media screen and (min-width: 768px) {
   .show__info-title {
     display: none;
-  }
-}
-@media screen and (min-width: 768px) {
-  .show:first-child {
-    align-items: center;
   }
 }
 @media screen and (min-width: 768px) {
