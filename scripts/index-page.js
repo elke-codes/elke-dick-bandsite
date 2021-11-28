@@ -24,7 +24,9 @@
             });
 
 			createAndRenderComments(comments);
-      addLikeButtonEventListener();
+      //have to be added after the page loads when the elements are created
+			addLikeButtonEventListener();
+			addDeleteButtonEventListener();
    
  	})
 		// .catch(error => console.log("there was a problem with this get request" + error));
@@ -33,6 +35,7 @@
 
 function createAndRenderComments(comments) {
   comments.forEach(comment => {
+
       //add all comments in the comments array to the page
       let commentArticle = createComment(comment);
       commentsContainer.appendChild(commentArticle);
@@ -42,6 +45,7 @@ function createAndRenderComments(comments) {
 function createComment(comment) {
   const commentArticle = document.createElement("article");
   commentArticle.classList.add("comment");
+  commentArticle.id = comment.id;
   commentsContainer.appendChild(commentArticle);
 
   const avatar = createAvatar(comment);
@@ -53,12 +57,6 @@ function createComment(comment) {
   
   return commentArticle;
 };
-
-
-// function createLikeAndDelete(comment){
-
-
-// }
 
 
 function createCommentInfo(comment) {
@@ -92,6 +90,7 @@ function createCommentInfo(comment) {
 
   const deleteButton =  document.createElement('button');
   deleteButton.classList.add("delete-button");
+  deleteButton.id = comment.id;
   deleteButton.innerText ="Delete 🗑️";
   commentsDate.appendChild(deleteButton);
 
@@ -198,7 +197,7 @@ function changeStatus(e) {
   oldActive.forEach(field => {
       field.classList.remove("comments__form-field--active");
   })
-  console.log("e current target: ", e.currentTarget);
+//   console.log("e current target: ", e.currentTarget);
   e.currentTarget.classList.add("comments__form-field--active");
 
 }
@@ -231,7 +230,7 @@ function postComment(e, comment){
     });
     createAndRenderComments(comments);
     e.target.reset();	
-    console.log("postcomment resolve: " ,resolve)
+    // console.log("postcomment resolve: " ,resolve)
   });
   // .catch(error => console.log("there was a problem with this post request" + error));
 }
@@ -249,16 +248,41 @@ function addDeleteButtonEventListener(){
 }
 
 // TODO
-// function handleDeleteButton(e){
+function handleDeleteButton(e){
 
-// }
+    const id = e.currentTarget.id;
+	axios.delete(`${BANSITE_API_URL}/comments/${id}?&api_key=${BANDSITE_API_KEY}`,e)
+	.then(resolve =>{
+		console.log(comments);
+		console.log(resolve.data.id);
+		
+
+	
+
+        // comments.map(comment =>{
+			const commentArticles = document.querySelectorAll("article");
+			console.log(commentArticles);
+			comments = commentArticles.forEach(commentArticle => {
+				console.log(resolve.data.id)
+	
+			if (commentArticle.id === resolve.data.id){
+				commentsContainer.removeChild(commentArticle);
+			} 
+			});
+
+		// clearComments(commentsContainer);
+		createAndRenderComments(comments);
+		// // });
+	})
+	
+}
 
 function addLikeButtonEventListener(){
-  const likeButtons = document.querySelectorAll(".like-button");
-  likeButtons.forEach(likeButton => {
-    likeButton.addEventListener("click", handleLikeButton)
+	const likeButtons = document.querySelectorAll(".like-button");
+	likeButtons.forEach(likeButton => {
+		likeButton.addEventListener("click", handleLikeButton)
 
-    });
+		});
   }
 
 function handleLikeButton(e){
