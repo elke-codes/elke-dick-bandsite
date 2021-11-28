@@ -114,8 +114,8 @@ address {
   .header__nav-link {
     font-size: 1rem;
     padding: 1.5rem 0;
-    width: -webkit-fit-content;
     width: -moz-fit-content;
+    width: -webkit-fit-content;
     width: fit-content;
     margin: 0 2rem;
   }
@@ -151,9 +151,9 @@ address {
 @media screen and (min-width: 768px) {
   .button {
     min-width: 9.375rem;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
     width: fit-content;
+    width: -moz-fit-content;
+    width: -webkit-fit-content;
     padding: 0 2rem;
     align-self: flex-end;
   }
@@ -275,8 +275,8 @@ address {
 @media screen and (min-width: 768px) {
   .footer__social {
     flex-direction: row;
-    height: -webkit-fit-content;
     height: -moz-fit-content;
+    height: -webkit-fit-content;
     height: fit-content;
     width: 8rem;
   }

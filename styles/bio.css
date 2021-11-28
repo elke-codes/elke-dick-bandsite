@@ -114,8 +114,8 @@ address {
   .header__nav-link {
     font-size: 1rem;
     padding: 1.5rem 0;
-    width: -webkit-fit-content;
     width: -moz-fit-content;
+    width: -webkit-fit-content;
     width: fit-content;
     margin: 0 2rem;
   }
@@ -151,9 +151,9 @@ address {
 @media screen and (min-width: 768px) {
   .button {
     min-width: 9.375rem;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
     width: fit-content;
+    width: -moz-fit-content;
+    width: -webkit-fit-content;
     padding: 0 2rem;
     align-self: flex-end;
   }
@@ -275,8 +275,8 @@ address {
 @media screen and (min-width: 768px) {
   .footer__social {
     flex-direction: row;
-    height: -webkit-fit-content;
     height: -moz-fit-content;
+    height: -webkit-fit-content;
     height: fit-content;
     width: 8rem;
   }
@@ -858,4 +858,43 @@ input {
   .comment__comment {
     font-size: 1rem;
   }
+}
+
+.like-button, .delete-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  border-radius: 6px;
+  height: 50px;
+  margin: 0;
+  padding: 0;
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  font-weight: 400;
+  font-size: 12px;
+  color: #afafaf;
+}
+@media screen and (min-width: 768px) {
+  .like-button, .delete-button {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .like-button, .delete-button {
+    font-size: 1rem;
+  }
+}
+
+.like-button:hover, .delete-button:hover {
+  cursor: pointer;
+  filter: grayscale(0.5);
+  opacity: 0.75;
+}
+
+.delete-button {
+  margin: 0;
+  padding: 0;
 }/*# sourceMappingURL=bio.css.map */

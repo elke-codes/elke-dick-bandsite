@@ -1,5 +1,5 @@
 /// --- GLOBAL VARIABLES --- ///
-  const comments = [];
+  let comments = [];
   // get API key at https://project-1-api.herokuapp.com/register 
   const BANSITE_API_URL = "https://project-1-api.herokuapp.com";
   const BANDSITE_API_KEY = "1d72f654-70d6-488d-8961-2583a70e24bc";
@@ -10,9 +10,9 @@
 
 // -- COMMENTS -- //
  function getComments(){
-      axios.get(`${BANSITE_API_URL}/comments?&api_key=${BANDSITE_API_KEY}`)
+      axios.get(`${BANSITE_API_URL}/comments?&api_key=${BANDSITE_API_KEY}`)     
       .then((resolve) =>{
-        console.log(resolve.data);
+        // console.log(resolve.data)const
           // get the comments from the api 
             const storedComments = resolve.data
           //push the comments to the empty comments array
@@ -24,9 +24,10 @@
             });
 
 			createAndRenderComments(comments);
+      addLikeButtonEventListener();
    
  	})
-		.catch(error => console.log("there was a problem with this get request" + error));
+		// .catch(error => console.log("there was a problem with this get request" + error));
 		}
 
 
@@ -48,9 +49,16 @@ function createComment(comment) {
 
   const commentInfo = createCommentInfo(comment);
   commentArticle.appendChild(commentInfo);
-
+  
+  
   return commentArticle;
 };
+
+
+// function createLikeAndDelete(comment){
+
+
+// }
 
 
 function createCommentInfo(comment) {
@@ -71,6 +79,21 @@ function createCommentInfo(comment) {
   commentsDate.classList.add("comment__date");
   commentsDate.innerText = timeAgo(comment.timestamp);
   commentInfoContainer.appendChild(commentsDate);
+
+  // const likeAndDelete = document.createElement('div')
+  // commentName.appendChild(likeAndDelete)
+  
+  const likeButton =  document.createElement('button');
+  likeButton.classList.add("like-button");
+  likeButton.id = comment.id;
+  commentLikes = comment.likes;
+  likeButton.innerText = commentLikes;
+  commentName.appendChild(likeButton);
+
+  const deleteButton =  document.createElement('button');
+  deleteButton.classList.add("delete-button");
+  deleteButton.innerText ="Delete 🗑️";
+  commentsDate.appendChild(deleteButton);
 
   const commentText = document.createElement("p");
   commentText.classList.add("comment__comment");
@@ -99,21 +122,6 @@ function createAvatar(comment) {
   return avatar;
 }
 
-
-// function addFormEventHandler(){
-//   const formEl = document.querySelector(".comments__form");
-//   formEl.addEventListener("submit", function (e) {
-//     e.preventDefault();
-    
-//     const newComment = {
-//       name: e.target.name.value,
-//       comment: e.target.comment.value,
-//       // img: "./assets/images/Mohan-muruge.jpg"
-//     }
-//     postComment(e, newComment);
-//   });
-// }
-
 function addFormEventListener(){
   const formEl = document.querySelector(".comments__form");
   formEl.addEventListener("submit",formEventHandler);
@@ -128,34 +136,9 @@ function formEventHandler(e){
     // img: "./assets/images/Mohan-muruge.jpg"
   }
 
-removeFormFieldModClass();
-
-formValidation(e, newComment);
-    // console.log("e ",e);
-    // console.log("e.target: ",e.target);
-    // console.log("e.target.name ",e.target.name);
-    //     const nameInputValue = e.target.name.value;
-    //     const commentInputValue = e.target.comment.value;
-    //     const nameInput = e.target.name;
-    //     const commentInput = e.target.comment;
-
-    //     if (!nameInputValue)
-    //     {
-    //       console.log("no name found: ",nameInputValue);
-    //       nameInput.classList.add("comments__form-field--error");
-          
-    //     } 
-    //     if (!commentInputValue){
-    //       console.log("no comment found:", e.target.comment.value);
-    //       commentInput.classList.add('comments__form-field--error');
-    //     } else{
-          // postComment(e, newComment);
-          
-        }
-  // }
-
-
-
+  removeFormFieldModClass();
+  formValidation(e, newComment);     
+}
 
   
 function formValidation(e, newComment){
@@ -205,15 +188,11 @@ function addFormFieldEventListener(){
         formField.addEventListener("click", changeStatus);
   });
 }
-
 function changeStatus(e) {
   const error = document.querySelectorAll(".comments__form-field--error");
   error.forEach(error => {
     error.classList.remove("comments__form-field--error");
-})
-
-
-
+  })
 
   const oldActive = document.querySelectorAll(".comments__form-field--active");
   oldActive.forEach(field => {
@@ -223,6 +202,7 @@ function changeStatus(e) {
   e.currentTarget.classList.add("comments__form-field--active");
 
 }
+
 
 function removeFormFieldModClass() {
   const activeFormField = document.querySelector(".comments__form-field--active");
@@ -251,7 +231,6 @@ function postComment(e, comment){
     });
     createAndRenderComments(comments);
     e.target.reset();	
-    // removeFormFieldModClass();
     console.log("postcomment resolve: " ,resolve)
   });
   // .catch(error => console.log("there was a problem with this post request" + error));
@@ -264,7 +243,43 @@ function clearComments(commentsContainer) {
   }
 }
 
+function addDeleteButtonEventListener(){
+  const deleteButton = document.querySelector(".delete-button")
+  deleteButton.addEventListener("click", handleDeleteButton);
+}
 
+// TODO
+// function handleDeleteButton(e){
+
+// }
+
+function addLikeButtonEventListener(){
+  const likeButtons = document.querySelectorAll(".like-button");
+  likeButtons.forEach(likeButton => {
+    likeButton.addEventListener("click", handleLikeButton)
+
+    });
+  }
+
+function handleLikeButton(e){
+  const id= e.currentTarget.id;
+  axios.put(`${BANSITE_API_URL}/comments/${id}/like?&api_key=${BANDSITE_API_KEY}`,e)
+  .then(resolve =>{
+//check for the current comment and replace the data so the likes get updated, otherwise return the unchaged comments
+    comments = comments.map(comment => {
+      if(comment.id === resolve.data.id) {
+        return resolve.data;
+      } else {
+        return comment;
+      }
+    });
+
+    clearComments(commentsContainer);
+    createAndRenderComments(comments);
+    addLikeButtonEventListener();
+  });
+ 
+}
 
 function timeAgo(dateString) {    
   // https://articlearn.id/article/d1a6b5cc-how-to-format-time-since-or-time-ago-in-j/
@@ -318,5 +333,6 @@ footerCopyright.innerText= new Date().getFullYear();
   
 /// --- CONTROL FLOW ---///
 getComments();
+
 addFormEventListener();
 addFormFieldEventListener();

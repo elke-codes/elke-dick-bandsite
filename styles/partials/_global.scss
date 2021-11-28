@@ -88,6 +88,8 @@ address {
     @include tablet {
       font-size: 1rem;
       padding: 1.5rem 0;
+      width: -moz-fit-content;
+      width: -webkit-fit-content;
       width: fit-content;
       margin: 0 2rem;
     }
@@ -126,6 +128,8 @@ address {
   @include tablet {
     min-width: 9.375rem;
     width: fit-content;
+    width: -moz-fit-content;
+    width: -webkit-fit-content;
     padding: 0 2rem;
     align-self: flex-end;
   }
@@ -198,6 +202,8 @@ address {
     padding-top: 0.5rem;
     @include tablet {
       flex-direction: row;
+      height: -moz-fit-content;
+      height: -webkit-fit-content;
       height: fit-content;
       width: 8rem;
     }
@@ -219,7 +225,7 @@ address {
       font-weight: 600;
     }
   }
-
+  //played around with flex order as suggested but couldn t figure it out...
   &__logo {
     visibility: visible;
     margin-top: 4rem;
