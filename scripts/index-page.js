@@ -1,5 +1,5 @@
 /// --- GLOBAL VARIABLES --- ///
-  let comments = [];
+let comments = [];
   // get API key at https://project-1-api.herokuapp.com/register 
   const BANSITE_API_URL = "https://project-1-api.herokuapp.com";
   const BANDSITE_API_KEY = "1d72f654-70d6-488d-8961-2583a70e24bc";
@@ -7,9 +7,8 @@
 
 
 /// ---- FUNCTION DECLARATIONS --- ///
-
-
 // -- COMMENTS -- //
+//get comments from the api
  function getComments(){
       axios.get(`${BANSITE_API_URL}/comments?&api_key=${BANDSITE_API_KEY}`)     
       .then((resolve) =>{
@@ -30,6 +29,7 @@
 		.catch(error => console.log(error));
 		}
 
+//create comments and add them to the page
 function createAndRenderComments(comments) {
   comments.forEach(comment => {
 
@@ -37,7 +37,6 @@ function createAndRenderComments(comments) {
       let commentArticle = createComment(comment);
       commentsContainer.appendChild(commentArticle);
       //have to be added after the page loads when the elements are created
-
       addDeleteButtonEventListener();
       addLikeButtonEventListener();
   })
@@ -58,7 +57,6 @@ function createComment(comment) {
   
   return commentArticle;
 };
-
 
 function createCommentInfo(comment) {
   const commentInfo = document.createElement("div");
@@ -119,6 +117,7 @@ function createAvatar(comment) {
   return avatar;
 }
 
+//post a comment
 function postComment(e, comment){
   axios.post(`
     ${BANSITE_API_URL}/comments?&api_key=${BANDSITE_API_KEY}`, comment
@@ -145,9 +144,7 @@ function clearComments(commentsContainer) {
   }
 }
 
-
-
-// -- CONVERT TIME -- // 
+// -- CONVERT TIME INTO TIME AGO -- // 
 function timeAgo(dateString) {    
   // https://articlearn.id/article/d1a6b5cc-how-to-format-time-since-or-time-ago-in-j/
   const date = new Date(dateString);
@@ -206,13 +203,11 @@ function formEventHandler(e){
   const newComment = {
     name: e.target.name.value,
     comment: e.target.comment.value,
-    // img: "./assets/images/Mohan-muruge.jpg"
   }
 
   removeFormFieldModClass();
   formValidation(e, newComment);     
 }
-
 
 function removeFormFieldModClass() {
   const activeFormField = document.querySelector(".comments__form-field--active");
@@ -226,7 +221,7 @@ function removeFormFieldModClass() {
       errorFormfield.classList.remove("comments__form-field--error");
     }
 }
-  
+
 function formValidation(e, newComment){
 
     const nameInputValue = e.target.name.value;
@@ -264,10 +259,8 @@ function formValidation(e, newComment){
     if (nameInputValue && commentInputValue){
         postComment(e, newComment);
     }
-
 }
       
-
 function addFormFieldEventListener(){
   //https://stackoverflow.com/questions/45112279/add-a-class-to-target-and-remove-class-from-other-elements-with-the-same-class-n
   const formFields = document.querySelectorAll(".comments__form-field");
@@ -288,9 +281,7 @@ function changeStatus(e) {
   })
 
   e.currentTarget.classList.add("comments__form-field--active");
-
 }
-
 
 function addDeleteButtonEventListener(){
   const deleteButton = document.querySelector(".delete-button")
@@ -313,8 +304,7 @@ function handleDeleteButton(e){
     clearComments(commentsContainer);
 		createAndRenderComments(comments);
 	
-	})
-	
+	})	
 }
 
 function addLikeButtonEventListener(){
@@ -326,7 +316,6 @@ function addLikeButtonEventListener(){
   }
 
 function handleLikeButton(e){
-
   const id= e.currentTarget.id;
   axios.put(`${BANSITE_API_URL}/comments/${id}/like?&api_key=${BANDSITE_API_KEY}`,e)
   .then(resolve =>{
@@ -343,7 +332,6 @@ function handleLikeButton(e){
     createAndRenderComments(comments);
 
   });
- 
 }
 
 
