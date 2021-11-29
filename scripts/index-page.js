@@ -25,9 +25,7 @@
             });
 
 			createAndRenderComments(comments);
-      //have to be added after the page loads when the elements are created
-			addLikeButtonEventListener();
-			addDeleteButtonEventListener();
+
  	})
 		.catch(error => console.log(error));
 		}
@@ -38,6 +36,10 @@ function createAndRenderComments(comments) {
       //add all comments in the comments array to the page
       let commentArticle = createComment(comment);
       commentsContainer.appendChild(commentArticle);
+      //have to be added after the page loads when the elements are created
+
+      addDeleteButtonEventListener();
+      addLikeButtonEventListener();
   })
 };
 
@@ -130,8 +132,6 @@ function postComment(e, comment){
       return b.timestamp - a.timestamp;
     });
     createAndRenderComments(comments);
-    addDeleteButtonEventListener();
-    addLikeButtonEventListener();
     e.target.reset();	
 
   })
@@ -312,8 +312,6 @@ function handleDeleteButton(e){
 		
     clearComments(commentsContainer);
 		createAndRenderComments(comments);
-    addDeleteButtonEventListener();
-    addLikeButtonEventListener();
 	
 	})
 	
@@ -343,8 +341,7 @@ function handleLikeButton(e){
 
     clearComments(commentsContainer);
     createAndRenderComments(comments);
-    addLikeButtonEventListener();
-    addDeleteButtonEventListener();
+
   });
  
 }
