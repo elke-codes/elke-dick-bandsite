@@ -26,7 +26,9 @@
 			createAndRenderComments(comments);
       //have to be added after the page loads when the elements are created
 			addLikeButtonEventListener();
+      console.log("like event listener added");
 			addDeleteButtonEventListener();
+      console.log("delete event listener added");
    
  	})
 		// .catch(error => console.log("there was a problem with this get request" + error));
@@ -85,7 +87,7 @@ function createCommentInfo(comment) {
   likeButton.classList.add("like-button");
   likeButton.id = comment.id;
   commentLikes = comment.likes;
-  likeButton.innerText = commentLikes;
+  likeButton.innerText = " ❤️ "+commentLikes;
   commentName.appendChild(likeButton);
 
   const deleteButton =  document.createElement('button');
@@ -147,11 +149,7 @@ function formValidation(e, newComment){
     const nameInput = e.target.name;
     const commentInput = e.target.comment;
 
-    // prevent the errormessages from stacking up by removing them when trying to submit the form again
-    const errorMessages = document.querySelectorAll(".comments__form-field--error-message")
-    errorMessages.forEach(errorMessage=>{
-    errorMessage.remove();
-    })
+   
 
 
     if (!nameInputValue)
@@ -177,6 +175,12 @@ function formValidation(e, newComment){
         else{
       postComment(e, newComment);
         }
+
+         // prevent the errormessages from stacking up by removing them when trying to submit the form again
+    const errorMessages = document.querySelectorAll(".comments__form-field--error-message")
+    errorMessages.forEach(errorMessage=>{
+        errorMessage.remove();
+    })
 }
       
 
@@ -253,26 +257,19 @@ function handleDeleteButton(e){
     const id = e.currentTarget.id;
 	axios.delete(`${BANSITE_API_URL}/comments/${id}?&api_key=${BANDSITE_API_KEY}`,e)
 	.then(resolve =>{
-		console.log(comments);
-		console.log(resolve.data.id);
-		
 
-	
+    comments = comments.filter((comment) =>{
+       return comment.id !== resolve.data.id;
+      }
+      
+    );
 
-        // comments.map(comment =>{
-			const commentArticles = document.querySelectorAll("article");
-			console.log(commentArticles);
-			comments = commentArticles.forEach(commentArticle => {
-				console.log(resolve.data.id)
-	
-			if (commentArticle.id === resolve.data.id){
-				commentsContainer.removeChild(commentArticle);
-			} 
-			});
-
-		// clearComments(commentsContainer);
+		clearComments(commentsContainer);
 		createAndRenderComments(comments);
-		// // });
+    addDeleteButtonEventListener();
+    addLikeButtonEventListener();
+    console.log("delete event listener added")
+	
 	})
 	
 }
@@ -286,6 +283,7 @@ function addLikeButtonEventListener(){
   }
 
 function handleLikeButton(e){
+  console.log("like button clicked")
   const id= e.currentTarget.id;
   axios.put(`${BANSITE_API_URL}/comments/${id}/like?&api_key=${BANDSITE_API_KEY}`,e)
   .then(resolve =>{
@@ -301,6 +299,7 @@ function handleLikeButton(e){
     clearComments(commentsContainer);
     createAndRenderComments(comments);
     addLikeButtonEventListener();
+    addDeleteButtonEventListener();
   });
  
 }
@@ -357,6 +356,5 @@ footerCopyright.innerText= new Date().getFullYear();
   
 /// --- CONTROL FLOW ---///
 getComments();
-
 addFormEventListener();
 addFormFieldEventListener();
